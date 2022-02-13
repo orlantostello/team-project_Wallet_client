@@ -1,27 +1,27 @@
 @font-face {
-  font-family: 'Poppins';
-  src: url('./Poppins-Regular.ttf') format('truetype');
+  font-family: 'Segoeui';
+  src: url('./Segoeui-Regular.ttf') format('ttf');
   font-weight: 400;
   font-style: normal;
 }
 
 @font-face {
-  font-family: 'Poppins';
-  src: url('./Poppins-Bold.ttf') format('truetype');
+  font-family: 'Segoeui';
+  src: url('./Segoeui-Bold.ttf') format('ttf');
   font-weight: 700;
   font-style: normal;
 }
 
 @font-face {
   font-family: 'Circe';
-  src: url('./Circe-Regular.ttf') format('truetype');
+  src: url('./Circe-Regular.otf') format('otf');
   font-weight: 400;
   font-style: normal;
 }
 
 @font-face {
   font-family: 'Circe';
-  src: url('./Poppins-Bold.ttf') format('truetype');
+  src: url('./Circe-Bold.otf') format('otf');
   font-weight: 700;
   font-style: normal;
 }
