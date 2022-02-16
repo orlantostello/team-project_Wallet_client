@@ -1,5 +1,9 @@
+import HomePageTitle from "./components/HomePageTitle/HomePageTitle.js"
+
 function App() {
-  return <div>Hello!</div>;
+  return( 
+  <HomePageTitle/>
+  );
 }
 
 export default App;
