@@ -1,13 +1,13 @@
-import {useDispatch, useSelector} from 'react-redux';
+// import {useDispatch, useSelector} from 'react-redux';
 import useTableScreen from '../../hooks/UseTableScreen';
-import {authOperations} from '../../redux/auth/authOperations';
-import {userNameSelector} from '../../redux/auth/authSelectors';
-import {Logo} from '../Svg/Logo';
-import {Exit} from '../Svg/Exit';
-import style from './HomePageTitle.module.css';
+// import {authOperations} from '../../redux/auth/authOperations';
+// import {userNameSelector} from '../../redux/auth/authSelectors';
+import { Logo } from '../Svg/Logo';
+import { Exit } from '../Svg/Exit';
+import style from './Header.module.css';
 
-const HomePageTitle = () => {
-  const name = "ivan";
+const Header = () => {
+  const name = 'ivan';
   // useSelector(userNameSelector);
   // const dispatch = useDispatch();
   const tableScreen = useTableScreen();
@@ -26,14 +26,13 @@ const HomePageTitle = () => {
 
           <button
             className={style.logout}
-            onClick={e => alert('I am logging out from account')
+            onClick={
+              e => alert('I am logging out from account')
               // dispatch(authOperations.logOut())
             }
           >
             <Exit s={style.logoutSvg} />
-            {Number(tableScreen) >= 768 && (
-              <span className={style.exit}>Exit</span>
-            )}
+            {Number(tableScreen) >= 768 && <span className={style.exit}>Exit</span>}
           </button>
         </div>
       </div>
@@ -41,4 +40,4 @@ const HomePageTitle = () => {
   );
 };
 
-export default HomePageTitle;
+export default Header;
