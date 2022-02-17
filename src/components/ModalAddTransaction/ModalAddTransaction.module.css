@@ -1,0 +1,79 @@
+.text {
+  font-family: 'Poppins';
+  font-weight: 400;
+  font-size: 30px;
+  line-height: 1.6;
+  letter-spacing: 0.03em;
+  text-align: center;
+  color: var(--black-text);
+  margin-bottom: 40px;
+}
+
+.balancedate {
+  display: flex;
+
+  justify-content: center;
+}
+
+.datecalendar {
+  position: relative;
+
+  display: flex;
+
+  width: 190px;
+}
+
+.date {
+  font-family: 'Poppins';
+  font-weight: 400;
+  font-size: 18px;
+  padding-left: 20px;
+  margin-right: 44px;
+  color: var(--black-text);
+}
+
+.date::after {
+  content: '';
+  bottom: 0px;
+  left: 0;
+  position: absolute;
+  width: 190px;
+  height: 1px;
+  border-radius: 2px;
+  background-color: #8b8686;
+}
+
+.calendar {
+  position: absolute;
+  /* bottom: 0px; */
+  right: -20px;
+  top: o;
+}
+
+.togolbar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.plus {
+  font-family: 'Circe';
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 1.6;
+  color: #24cca7;
+  margin-right: 60px;
+}
+.minus {
+  font-family: 'Circe';
+  font-weight: 700;
+  font-size: 16px;
+  color: #ff6596;
+  margin-left: 60px;
+}
+
+.categories {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 40px;
+}

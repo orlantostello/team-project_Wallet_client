@@ -1,0 +1,59 @@
+.switchfor {
+  position: relative;
+  cursor: pointer;
+}
+
+.switchbox {
+  display: flex;
+
+  margin-bottom: 40px;
+  width: 100%;
+  margin-right: -40px;
+}
+
+.switch {
+  display: none;
+}
+
+.switchfor::after {
+  content: '';
+  width: 80px;
+  height: 40px;
+  box-sizing: border-box;
+  border-radius: 30px;
+
+  box-shadow: 0 0 1px 1px #e0e0e0;
+  position: absolute;
+  top: 0px;
+  left: -40px;
+}
+
+.switchfor::before {
+  left: 0px;
+  top: -1px;
+  background-color: #ff6596;
+
+  content: '';
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  position: absolute;
+  z-index: 1;
+  transition: all 200ms ease;
+}
+
+.switch:checked + .switchfor::before {
+  content: '';
+  width: 44px;
+  height: 44px;
+
+  background-color: #24cca7;
+
+  border-radius: 50%;
+  position: absolute;
+
+  top: -1px;
+  left: -40px;
+  z-index: 1;
+  transition: all 200ms ease;
+}
