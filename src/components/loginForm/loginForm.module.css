@@ -1,0 +1,99 @@
+.field {
+  position: relative;
+  display: flex;
+  margin: 0 20px 40px;
+  width: 280px;
+  height: 34px;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.icon {
+  margin: auto 22px auto 12px;
+  width: 20px;
+  height: 20px;
+  color: #e0e0e0;
+}
+
+.input {
+  width: inherit;
+  font-family: Circe;
+  font-size: 18px;
+  line-height: 1.47;
+  border: none;
+}
+
+.notification {
+  position: absolute;
+  margin-left: 70px;
+  margin-top: -34px;
+  /* top: 0; */
+
+  font-family: Circe;
+  font-size: 12px;
+  line-height: 1.1;
+  color: #ff4800;
+}
+
+.btn {
+  display: block;
+  width: 280px;
+  height: 50px;
+  margin: 0 auto 20px;
+
+  font-family: Circe;
+  font-size: 18px;
+  line-height: 1.5;
+  text-transform: uppercase;
+
+  border-radius: 20px;
+}
+
+.registerBtn {
+  color: #4a56e2;
+  background-color: #ffffff;
+  border: solid 1px #4a56e2;
+
+  transition-property: color, background-color, border, box-shadow;
+  transition-duration: 500ms;
+}
+
+.registerBtn:hover,
+.registerBtn:focus {
+  color: #ffffff;
+
+  background-color: #24cca7;
+  border: transparent;
+  box-shadow: 0px 0px 6px 0px #00000085;
+}
+
+.logInBtn {
+  color: #ffffff;
+  background-color: #24cca7;
+  border: transparent;
+
+  transition-property: box-shadow;
+  transition-duration: 500ms;
+}
+
+.logInBtn:hover,
+.logInBtn:focus {
+  /* color: #ffffff; */
+
+  box-shadow: 0px 0px 6px 0px #00000085;
+}
+
+@media screen and (min-width: 768px) {
+  .field {
+    margin: 0 65px 40px;
+    width: 410px;
+  }
+
+  .icon {
+    width: 20px;
+    height: 20px;
+  }
+
+  .btn {
+    width: 300px;
+  }
+}
