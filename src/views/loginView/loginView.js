@@ -1,15 +1,15 @@
-import Media from "react-media";
+import Media from 'react-media';
 
-import LoginForm from "../../components/loginForm/loginForm";
-import { ReactComponent as MainIcon } from "../../images/loginMainIcon.svg";
-import { ReactComponent as WalletLogo } from "../../images/walletLogo.svg";
+import LoginForm from '../../components/LoginForm/LoginForm';
+import { ReactComponent as MainIcon } from '../../images/loginMainIcon.svg';
+import { ReactComponent as WalletLogo } from '../../images/walletLogo.svg';
 
-import s from "./loginView.module.css";
+import s from './LoginView.module.css';
 
 export default function LoginView() {
   return (
     <Media query={{ maxWidth: 767 }}>
-      {(matches) =>
+      {matches =>
         matches ? (
           <div className={s.formWrapper}>
             <WalletLogo className={s.logo} />
