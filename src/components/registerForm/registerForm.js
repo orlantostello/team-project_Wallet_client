@@ -4,7 +4,7 @@ import { useFormik } from 'formik';
 import * as yup from 'yup';
 import { MdEmail, MdLock, MdAccountBox } from 'react-icons/md';
 
-import { usersOperations, usersSelectors } from '../../redux/users';
+import { usersOperations } from '../../redux/users';
 import s from './registerForm.module.css';
 
 // eslint-disable-next-line no-useless-escape
@@ -110,7 +110,11 @@ export default function RegisterForm() {
       </label>
       {touched.name && errors.name && <p className={s.notification}>{errors.name}</p>}
 
-      <button disable={isValid && !dirty} type="submit" className={s.registerBtn + ' ' + s.btn}>
+      <button
+        // disable={isValid && !dirty}
+        type="submit"
+        className={s.registerBtn + ' ' + s.btn}
+      >
         Регистрация
       </button>
 

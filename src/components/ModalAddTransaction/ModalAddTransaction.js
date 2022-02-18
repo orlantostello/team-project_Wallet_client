@@ -235,7 +235,7 @@ function ModalAddTransaction({ onCloseModal }) {
             <ThemeProvider theme={theme}>
               <Button
                 type={'submit'}
-                disable={!(isValid && dirty)}
+                /*disable={!(isValid && dirty)}*/
                 style={{
                   marginTop: '50px',
                   width: '300px',

@@ -73,7 +73,11 @@ export default function LoginForm() {
       </label>
       {touched.password && errors.password && <p className={s.notification}>{errors.password}</p>}
 
-      <button disable={isValid && !dirty} type={'submit'} className={[s.logInBtn, s.btn].join(' ')}>
+      <button
+        // disable={isValid && !dirty}
+        type={'submit'}
+        className={[s.logInBtn, s.btn].join(' ')}
+      >
         Вход
       </button>
 

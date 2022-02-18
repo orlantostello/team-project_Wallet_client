@@ -1,16 +1,29 @@
-// import {useDispatch, useSelector} from 'react-redux';
+import { useState } from 'react';
+import { useSelector } from 'react-redux';
 import useTableScreen from '../../hooks/UseTableScreen';
 // import {authOperations} from '../../redux/auth/authOperations';
-// import {userNameSelector} from '../../redux/auth/authSelectors';
+import usersSelectors from '../../redux/users/user-selectors';
+import ModalLogout from '../ModalLogout';
 import { Logo } from '../Svg/Logo';
 import { Exit } from '../Svg/Exit';
 import style from './Header.module.css';
 
 const Header = () => {
-  const name = 'ivan';
-  // useSelector(userNameSelector);
+  const [showModal, setShowModal] = useState(false);
+
+  const user = useSelector(usersSelectors.getUser);
+  const { name } = user;
+
   // const dispatch = useDispatch();
   const tableScreen = useTableScreen();
+
+  function onOpenModal() {
+    setShowModal(true);
+  }
+
+  function onCloseModal() {
+    setShowModal(false);
+  }
 
   return (
     <div className={style.wrapper}>
@@ -24,18 +37,13 @@ const Header = () => {
         <div className={style.userInfo}>
           <span className={style.userName}>{name}</span>
 
-          <button
-            className={style.logout}
-            onClick={
-              e => alert('I am logging out from account')
-              // dispatch(authOperations.logOut())
-            }
-          >
+          <button className={style.logout} onClick={onOpenModal}>
             <Exit s={style.logoutSvg} />
             {Number(tableScreen) >= 768 && <span className={style.exit}>Exit</span>}
           </button>
         </div>
       </div>
+      {showModal && <ModalLogout onCloseModal={onCloseModal} />}
     </div>
   );
 };
