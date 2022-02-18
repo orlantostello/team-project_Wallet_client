@@ -1,0 +1,96 @@
+.Rate {
+  font-style: normal;
+  width: 280px;
+  border-radius: 30px;
+  background-color: #4a56e2;
+  color: #fff;
+  list-style-type: none;
+  padding: 0;
+  margin: 0 auto;
+}
+
+.RateHead {
+  box-sizing: border-box;
+  font-weight: 700;
+  font-size: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100% / 3;
+  height: 50px;
+  background-color: rgba(255, 255, 255, 0.2);
+  padding-top: 12px;
+  padding-bottom: 12px;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+.RateRow {
+  font-weight: 400;
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  text-align: center;
+  padding-top: 10px;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+.RateRow:last-child {
+  padding-bottom: 22px;
+}
+
+.RateData {
+  font-family: 'Circe', sans-serif;
+  font-style: normal;
+  line-height: 1.5;
+}
+
+@media screen and (min-width: 768px) {
+  .Rate {
+    width: 334px;
+    height: 188px;
+    margin-top: 20px;
+  }
+
+  .RateHead {
+    font-size: 18px;
+    width: 100% / 3;
+    padding-top: 11px;
+    padding-bottom: 11px;
+  }
+
+  .RateRow {
+    padding-top: 8px;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .Rate {
+    width: 350px;
+    height: 347px;
+    margin-left: 0px;
+  }
+
+  .RateHead {
+    width: 100% / 3;
+    height: 60px;
+    padding-left: 30px;
+    padding-right: 30px;
+    padding-top: 17px;
+    padding-bottom: 17px;
+  }
+
+  .RateRow {
+    padding-top: 20px;
+    padding-left: 30px;
+    padding-right: 30px;
+  }
+
+  .RateData {
+    font-family: 'Circe', sans-serif;
+    font-style: normal;
+    line-height: 1.5;
+  }
+}
