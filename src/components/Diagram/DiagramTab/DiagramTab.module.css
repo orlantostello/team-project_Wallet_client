@@ -1,0 +1,103 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+.section {
+  width: 320px;
+  padding: 20px 20px 40px 20px;
+  margin: 0 auto;
+  background-color: #e7eaf2;
+}
+.sectionTitle {
+  margin-bottom: 10px;
+  padding: 5px 0;
+  font-family: 'Segoeui';
+  font-size: 30px;
+  font-weight: 400;
+  font-style: normal;
+  text-align: left;
+}
+
+.statisticContainer {
+  width: 280px;
+  margin: 0 auto;
+  font-family: 'Circe';
+  font-size: 16px;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.select {
+  margin-bottom: 20px;
+}
+
+.select select {
+  display: block;
+  width: 100%;
+  padding: 15px 21px;
+  background: none;
+  border: 1px solid #000;
+  border-radius: 30px;
+  font-family: 'Circe';
+  font-size: 16px;
+  font-weight: 400;
+  font-style: normal;
+  text-transform: capitalize;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  overflow: hidden;
+  background: url('./selector.svg') no-repeat center right;
+  background-position-x: 92%;
+}
+
+select:first-child {
+  margin-bottom: 20px;
+}
+
+@media screen and (min-width: 768px) {
+  .section {
+    width: 768px;
+    padding: 20px 23px 40px 40px;
+  }
+  .sectionTitle {
+    margin-bottom: 20px;
+  }
+
+  .statisticContainer {
+    width: 705px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+  }
+
+  .select {
+    margin-bottom: 20px;
+    width: 350px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .select select {
+    width: 166px;
+    background-position-x: 85%;
+  }
+
+  select:first-child {
+    margin-bottom: 0;
+    margin-right: 18px;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .section {
+    width: 815px;
+    padding: 30px 85px 100px 30px;
+  }
+
+  .statisticContainer {
+    width: 700px;
+  }
+}
