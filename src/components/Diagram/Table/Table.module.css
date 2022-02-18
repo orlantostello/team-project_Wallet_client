@@ -1,0 +1,113 @@
+/* .tableWrap {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+} */
+
+ul {
+  list-style: none;
+  /* width: 100%; */
+}
+
+li {
+  display: flex;
+  /* justify-content: space-between; */
+  align-items: center;
+}
+/* li:not(:last-child) {
+  /* margin-bottom: 10px; */
+/* padding: 5px; */
+/* gap: 0.5rem; */
+/* border-bottom: 1px solid gray; */
+/*} */
+
+.tableTitle,
+.tableTitleCosts,
+.tableTitleIncome {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: 'Circe';
+  font-weight: 700;
+  font-style: normal;
+}
+.tableTitle {
+  padding: 19px 20px;
+  font-size: 18px;
+  background-color: #fff;
+  border-radius: 30px;
+}
+
+.tableItem {
+  padding: 15px 20px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.6);
+}
+
+.marker {
+  width: 24px;
+  height: 24px;
+  margin-right: 15px;
+  border-radius: 2px;
+}
+.marker:hover {
+  box-shadow: 4px 0px 4px rgba(0, 0, 0, 0.25);
+  border: 1px solid rgba(0, 0, 0, 0.25);
+}
+
+.itemInfo {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.itemName {
+  text-transform: capitalize;
+  max-width: 45%;
+}
+
+.tableTitleCosts,
+.tableTitleIncome {
+  padding: 15px 20px 5px 20px;
+  font-size: 16px;
+}
+
+.tableTitlelIncome {
+  padding: 5px 20px 5px 20px;
+}
+.totalCosts {
+  color: #ff6596;
+}
+.totalIncome {
+  color: #24cca7;
+}
+
+@media screen and (min-width: 768px) {
+  .tableTitle {
+    padding: 19px 30px;
+    font-size: 18px;
+    background-color: #fff;
+    border-radius: 30px;
+  }
+
+  .tableItem {
+    padding: 15px 30px 15px 20px;
+  }
+
+  .marker {
+    margin-right: 16px;
+  }
+  .itemName {
+    text-transform: capitalize;
+    max-width: 70%;
+  }
+
+  .tableTitleCosts,
+  .tableTitleIncome {
+    padding: 15px 30px 5px 20px;
+    font-size: 16px;
+  }
+
+  .tableTitlelIncome {
+    padding: 5px 30px 5px 20px;
+  }
+}
