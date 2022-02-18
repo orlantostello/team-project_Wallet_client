@@ -1,15 +1,15 @@
-import Media from "react-media";
+import Media from 'react-media';
 
-import RegisterForm from "../../components/registerForm/registerForm";
-import { ReactComponent as MainIcon } from "../../images/signupMainIcon.svg";
-import { ReactComponent as WalletLogo } from "../../images/walletLogo.svg";
+import RegisterForm from '../../components/RegisterForm/RegisterForm';
+import { ReactComponent as MainIcon } from '../../images/signupMainIcon.svg';
+import { ReactComponent as WalletLogo } from '../../images/walletLogo.svg';
 
-import s from "./registerView.module.css";
+import s from './RegisterView.module.css';
 
 export default function RegisterView() {
   return (
     <Media query={{ maxWidth: 767 }}>
-      {(matches) =>
+      {matches =>
         matches ? (
           <div className={s.formWrapper}>
             <WalletLogo className={s.logo} />

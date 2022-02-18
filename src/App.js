@@ -3,9 +3,9 @@
 import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom';
 
 import PrivateRoute from './components/PrivateRoute';
-import Login from './views/loginView';
-import Register from './views/registerView';
-import Current from './views/currentViews';
+import Login from './views/LoginView';
+import Register from './views/RegisterView';
+import Current from './views/СurrentViews';
 
 function App() {
   return (
