@@ -1,22 +1,20 @@
-// import { useDispatch } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { useFormik } from 'formik';
 import * as yup from 'yup';
 import { MdEmail, MdLock, MdAccountBox } from 'react-icons/md';
-import s from './registerForm.module.css';
-import { Navigate } from 'react-router';
 
+import { usersOperations, usersSelectors } from '../../redux/users';
+import s from './registerForm.module.css';
+
+// eslint-disable-next-line no-useless-escape
 const emailRegexp = /^\w+([\.-]?\w+)+@\w+([\.:]?\w+)+(\.[a-zA-Z0-9]{2,3})+$/;
 
 export default function RegisterForm() {
-  // const dispatch = useDispatch();
+  const dispatch = useDispatch();
 
   const validationSchema = yup.object().shape({
-    email: yup
-      .string()
-      .matches(emailRegexp, 'Введите корректный email')
-      // .email("Введите email")
-      .required('Введите email'),
+    email: yup.string().matches(emailRegexp, 'Введите корректный email').required('Введите email'),
     password: yup.string().min(6).max(12).required('Введите пароль'),
     confirmPassword: yup
       .string()
@@ -34,9 +32,8 @@ export default function RegisterForm() {
     },
     validationSchema,
     onSubmit: (values, { resetForm }) => {
-      console.log(JSON.stringify(values, null, 2));
-      console.log(handleSubmit);
-      // dispatch(register({ name, email, password }));
+      const { name, email, password } = values;
+      dispatch(usersOperations.register({ name, email, password }));
       resetForm();
     },
   });
@@ -44,8 +41,7 @@ export default function RegisterForm() {
   const { values, errors, touched, isValid, dirty, handleSubmit, handleChange, handleBlur } =
     formik;
 
-  console.log('isValid && !dirty: ', isValid && !dirty);
-  // console.log("formik: ", formik);
+  // console.log('isValid && !dirty: ', isValid && !dirty);
 
   const navigate = useNavigate();
   const handleOnClickToLogin = () => navigate('/login');
