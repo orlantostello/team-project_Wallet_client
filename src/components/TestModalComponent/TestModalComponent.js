@@ -1,22 +1,23 @@
 // import React, { useEffect, useState } from 'react';
-import { useState } from 'react';
+// import { useState } from 'react';
 // import { Button } from '@mui/material';
 // import ModalLogout from '../ModalLogout';
 // import Modal from '../Modal';
-import ModalAddTransaction from '../ModalAddTransaction';
-import ButtonAddTransactions from '../ButtonAddTransactions';
+// import ModalAddTransaction from '../ModalAddTransaction';
+// import ButtonAddTransactions from '../ButtonAddTransactions';
 // import plusbtn from '../ModalAddTransaction/plusbtn.svg';
+import MobileModalAddTransaction from '../MobileModalAddTransaction';
 
 function TestModalComponent() {
-  const [showModal, setShowModa] = useState(false);
+  // const [showModal, setShowModa] = useState(false);
 
-  const onOpenModal = () => {
-    setShowModa(true);
-  };
+  // const onOpenModal = () => {
+  //   setShowModa(true);
+  // };
 
-  const onCloseModal = () => {
-    setShowModa(false);
-  };
+  // const onCloseModal = () => {
+  //   setShowModa(false);
+  // };
 
   return (
     <>
@@ -31,11 +32,12 @@ function TestModalComponent() {
         logaut
       </Button>
       <img src={plusbtn} className="s.calendar" alt="calendar" /> */}
-      <ButtonAddTransactions onOpenModal={onOpenModal} />
+      {/* <ButtonAddTransactions onOpenModal={onOpenModal} /> */}
 
       {/* {showModal && <ModalLogout onCloseModal={onCloseModal} />} */}
 
-      {showModal && <ModalAddTransaction onCloseModal={onCloseModal} />}
+      {/* {showModal && <ModalAddTransaction onCloseModal={onCloseModal} />} */}
+      <MobileModalAddTransaction />
     </>
   );
 }
