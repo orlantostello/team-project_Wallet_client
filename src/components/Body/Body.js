@@ -1,6 +1,7 @@
 import s from './Body.module.css';
 import LeftBar from '../LeftBar';
 import Rate from '../Rate';
+import List from '../List/List'
 import { BrowserRouter as Router, Route, Routes} from 'react-router-dom';
 
 
@@ -11,8 +12,8 @@ function Body() {
       <LeftBar />
 
         <Routes>
-            <Route exact path="" element={
-              <h1>Это Домашняя страница</h1>
+        <Route exact path="" element={
+          <List/>
             } />
             <Route exact path="diagram" element={
               <h1>Это диаграмма</h1>
