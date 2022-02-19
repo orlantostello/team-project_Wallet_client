@@ -4,7 +4,7 @@ import userOperations from './user-operations';
 const initialState = {
   user: { name: null, email: null, balance: null },
   token: null,
-  error: null,
+  error: false,
   isLoggedIn: false,
   isFetchingCurrentUser: false,
 };
@@ -18,10 +18,11 @@ const usersSlice = createSlice({
       state.token = action.payload.data.token;
       state.isLoggedIn = true;
       state.isFetchingCurrentUser = false;
-      state.error = null;
+      state.error = false;
     },
     [userOperations.register.rejected](state, action) {
-      state.error = action.error.message;
+      // state.error = action.error.message;
+      state.error = true;
       state.isLoggedIn = false;
       state.isFetchingCurrentUser = false;
     },
@@ -34,10 +35,11 @@ const usersSlice = createSlice({
       state.token = action.payload.data.token;
       state.isLoggedIn = true;
       state.isFetchingCurrentUser = false;
-      state.error = null;
+      state.error = false;
     },
     [userOperations.logIn.rejected](state, action) {
-      state.error = action.error.message;
+      // state.error = action.error.message;
+      state.error = true;
       state.isLoggedIn = false;
       state.isFetchingCurrentUser = false;
     },
@@ -55,10 +57,10 @@ const usersSlice = createSlice({
       state.user = action.payload.data.user;
       state.isLoggedIn = true;
       state.isFetchingCurrentUser = false;
-      state.error = null;
+      state.error = false;
     },
     [userOperations.fetchCurrentUser.rejected](state, action) {
-      state.error = action.error.message;
+      // state.error = action.error.message;
       state.isLoggedIn = false;
       state.isFetchingCurrentUser = false;
     },
