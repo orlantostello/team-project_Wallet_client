@@ -1,10 +1,14 @@
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { useFormik } from 'formik';
 import * as yup from 'yup';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
+import Loader from '../Loader/Loader';
+import { usersOperations, usersSelectors } from '../../redux/users';
 import { MdEmail, MdLock, MdAccountBox } from 'react-icons/md';
 
-import { usersOperations } from '../../redux/users';
 import s from './registerForm.module.css';
 
 // eslint-disable-next-line no-useless-escape
@@ -12,6 +16,11 @@ const emailRegexp = /^\w+([\.-]?\w+)+@\w+([\.:]?\w+)+(\.[a-zA-Z0-9]{2,3})+$/;
 
 export default function RegisterForm() {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  const isLoading = useSelector(usersSelectors.getIsFetchingCurrent);
+  const isError = useSelector(usersSelectors.getError);
+  const handleOnClickToLogin = () => navigate('/login');
 
   const validationSchema = yup.object().shape({
     email: yup.string().matches(emailRegexp, 'Введите корректный email').required('Введите email'),
@@ -33,8 +42,13 @@ export default function RegisterForm() {
     validationSchema,
     onSubmit: (values, { resetForm }) => {
       const { name, email, password } = values;
-      dispatch(usersOperations.register({ name, email, password }));
-      resetForm();
+      if (isError) {
+        toast.error('Please, enter correct data');
+        return;
+      } else {
+        dispatch(usersOperations.register({ name, email, password }));
+        resetForm();
+      }
     },
   });
 
@@ -43,88 +57,91 @@ export default function RegisterForm() {
 
   // console.log('isValid && !dirty: ', isValid && !dirty);
 
-  const navigate = useNavigate();
-  const handleOnClickToLogin = () => navigate('/login');
-
   return (
-    <form className={'registerForm'} onSubmit={handleSubmit}>
-      <label htmlFor={'email'} className={s.field}>
-        <MdEmail className={s.icon} />
-        <input
-          id={'email'}
-          type={'email'}
-          name={'email'}
-          placeholder={'E-mail'}
-          className={s.input}
-          value={values.email}
-          onChange={handleChange}
-          onBlur={handleBlur}
-        ></input>
-      </label>
-      {touched.email && errors.email && <p className={s.notification}>{errors.email}</p>}
+    <>
+      <form className={'registerForm'} onSubmit={handleSubmit}>
+        <label htmlFor={'email'} className={s.field}>
+          <MdEmail className={s.icon} />
+          <input
+            id={'email'}
+            type={'email'}
+            name={'email'}
+            placeholder={'E-mail'}
+            className={s.input}
+            value={values.email}
+            onChange={handleChange}
+            onBlur={handleBlur}
+          ></input>
+        </label>
+        {touched.email && errors.email && <p className={s.notification}>{errors.email}</p>}
 
-      <label htmlFor={'password'} className={s.field}>
-        <MdLock className={s.icon} />
-        <input
-          id={'password'}
-          type={'password'}
-          name={'password'}
-          placeholder={'Пароль'}
-          className={s.input}
-          value={values.password}
-          onChange={handleChange}
-          onBlur={handleBlur}
-        ></input>
-      </label>
-      {touched.password && errors.password && <p className={s.notification}>{errors.password}</p>}
+        <label htmlFor={'password'} className={s.field}>
+          <MdLock className={s.icon} />
+          <input
+            id={'password'}
+            type={'password'}
+            name={'password'}
+            placeholder={'Пароль'}
+            className={s.input}
+            value={values.password}
+            onChange={handleChange}
+            onBlur={handleBlur}
+          ></input>
+        </label>
+        {touched.password && errors.password && <p className={s.notification}>{errors.password}</p>}
 
-      <label htmlFor={'confirmPassword'} className={s.field}>
-        <MdLock className={s.icon} />
-        <input
-          id={'confirmPassword'}
-          type={'password'}
-          name={'confirmPassword'}
-          placeholder={'Подтвердите пароль'}
-          className={s.input}
-          value={values.confirmPassword}
-          onChange={handleChange}
-          onBlur={handleBlur}
-        ></input>
-      </label>
-      {touched.confirmPassword && errors.confirmPassword && (
-        <p className={s.notification}>{errors.confirmPassword}</p>
-      )}
+        <label htmlFor={'confirmPassword'} className={s.field}>
+          <MdLock className={s.icon} />
+          <input
+            id={'confirmPassword'}
+            type={'password'}
+            name={'confirmPassword'}
+            placeholder={'Подтвердите пароль'}
+            className={s.input}
+            value={values.confirmPassword}
+            onChange={handleChange}
+            onBlur={handleBlur}
+          ></input>
+        </label>
+        {touched.confirmPassword && errors.confirmPassword && (
+          <p className={s.notification}>{errors.confirmPassword}</p>
+        )}
 
-      <label htmlFor={'name'} className={s.field}>
-        <MdAccountBox className={s.icon} />
-        <input
-          id={'name'}
-          type={'text'}
-          name={'name'}
-          placeholder={'Ваше имя'}
-          className={s.input}
-          value={values.name}
-          onChange={handleChange}
-          onBlur={handleBlur}
-        ></input>
-      </label>
-      {touched.name && errors.name && <p className={s.notification}>{errors.name}</p>}
+        <label htmlFor={'name'} className={s.field}>
+          <MdAccountBox className={s.icon} />
+          <input
+            id={'name'}
+            type={'text'}
+            name={'name'}
+            placeholder={'Ваше имя'}
+            className={s.input}
+            value={values.name}
+            onChange={handleChange}
+            onBlur={handleBlur}
+          ></input>
+        </label>
+        {touched.name && errors.name && <p className={s.notification}>{errors.name}</p>}
 
-      <button
-        // disable={isValid && !dirty}
-        type="submit"
-        className={s.registerBtn + ' ' + s.btn}
-      >
-        Регистрация
-      </button>
+        <button
+          // disable={(isValid && !dirty).toString()}
+          type="submit"
+          className={s.registerBtn + ' ' + s.btn}
+        >
+          Регистрация
+        </button>
 
-      <button
-        onClick={handleOnClickToLogin}
-        type="button"
-        className={[s.logInBtn, s.btn].join(' ')}
-      >
-        Вход
-      </button>
-    </form>
+        <button
+          onClick={handleOnClickToLogin}
+          type="button"
+          className={[s.logInBtn, s.btn].join(' ')}
+        >
+          Вход
+        </button>
+      </form>
+
+      {isLoading && <Loader />}
+
+      <ToastContainer autoClose={3000} position="top-center" theme="colored" />
+    </>
   );
 }

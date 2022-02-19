@@ -75,7 +75,6 @@
   position: relative;
   margin-top: 60px;
   margin-bottom: 50px;
-  /* margin-left: 114px; */
   width: 274px;
   height: 250px;
 }
@@ -85,6 +84,7 @@
   align-self: center;
   margin-left: 56px;
 
+  /* font-family: 'Segoeui' 'Sans Serif'; */
   font-size: 30px;
   font-weight: 400;
   line-height: 1.5;
