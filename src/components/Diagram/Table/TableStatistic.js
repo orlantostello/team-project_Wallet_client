@@ -3,8 +3,7 @@ import s from './Table.module.css'
 
 export default function TableStatistic({ categoriesTable, costsSumStatistic, income }) {
      
-    return (
-        // <div className={s.tableWrap}>
+    return (        
         <ul>
             <li
                 className={s.tableTitle}>                
@@ -36,9 +35,7 @@ export default function TableStatistic({ categoriesTable, costsSumStatistic, inc
                     <p>Доходы</p>
                     <p className={s.totalIncome}>{income}</p>
             </li>
-
-        </ul> 
-        // </div>       
+        </ul>             
     )
 }
 
