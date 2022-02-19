@@ -20,6 +20,13 @@ export default function RegisterForm() {
 
   const isLoading = useSelector(usersSelectors.getIsFetchingCurrent);
   const isError = useSelector(usersSelectors.getError);
+
+  async function createNotification() {
+    await toast.error('Упс! Произошла ошибка. Такой логин уже используется', {
+      toastId: 'custom-id-yes',
+    });
+  }
+
   const handleOnClickToLogin = () => navigate('/login');
 
   const validationSchema = yup.object().shape({
@@ -40,15 +47,11 @@ export default function RegisterForm() {
       name: '',
     },
     validationSchema,
-    onSubmit: (values, { resetForm }) => {
+    onSubmit: async (values, { resetForm }) => {
       const { name, email, password } = values;
-      if (isError) {
-        toast.error('Please, enter correct data');
-        return;
-      } else {
-        dispatch(usersOperations.register({ name, email, password }));
-        resetForm();
-      }
+      await dispatch(usersOperations.register({ name, email, password }));
+      await createNotification();
+      resetForm();
     },
   });
 
@@ -141,7 +144,7 @@ export default function RegisterForm() {
 
       {isLoading && <Loader />}
 
-      <ToastContainer autoClose={3000} position="top-center" theme="colored" />
+      {isError && <ToastContainer autoClose={3000} position="top-center" theme="colored" />}
     </>
   );
 }

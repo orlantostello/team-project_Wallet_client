@@ -19,8 +19,14 @@ export default function LoginForm() {
   const navigate = useNavigate();
 
   const isLoading = useSelector(usersSelectors.getIsFetchingCurrent);
-  const isError = false;
-  // const isError = useSelector(usersSelectors.getError);
+  const isError = useSelector(usersSelectors.getError);
+
+  async function createNotification() {
+    await toast.error('Неверный логин или пароль!', {
+      toastId: 'custom-id-yes',
+    });
+  }
+
   const handleOnClickToRegister = () => {
     navigate('/register');
   };
@@ -36,15 +42,11 @@ export default function LoginForm() {
       password: '',
     },
     validationSchema,
-    onSubmit: (values, { resetForm }) => {
+    onSubmit: async (values, { resetForm }) => {
       const { email, password } = values;
-      if (isError) {
-        toast.error('Please, enter correct email and/or password');
-        return;
-      } else {
-        dispatch(usersOperations.logIn({ email, password }));
-        resetForm();
-      }
+      await dispatch(usersOperations.logIn({ email, password }));
+      await createNotification();
+      resetForm();
     },
   });
 
@@ -105,7 +107,7 @@ export default function LoginForm() {
         </button>
       </form>
 
-      <ToastContainer autoClose={3000} position="top-center" theme="colored" />
+      {isError && <ToastContainer autoClose={3000} position="top-center" theme="colored" />}
     </>
   );
 }

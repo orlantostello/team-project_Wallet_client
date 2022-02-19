@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import Modal from '../Modal';
+
 import { Input } from '@mui/material';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import InputLabel from '@mui/material/InputLabel';
@@ -12,12 +12,11 @@ import { useFormik } from 'formik';
 import * as yup from 'yup';
 // import { toast } from 'react-hot-toast';
 
-import s from './ModalAddTransaction.module.css';
+import s from './MobileModalAddTransaction.module.css';
 import Switch from '../Switch';
-import calendar from './calendar.svg';
-import close from './close.svg';
+import calendar from '../ModalAddTransaction/calendar.svg';
 
-function ModalAddTransaction({ onCloseModal }) {
+function MobileModalAddTransaction() {
   const [checked, setChecked] = useState(true);
 
   const handleChangeChecked = event => {
@@ -57,7 +56,7 @@ function ModalAddTransaction({ onCloseModal }) {
   });
 
   function onFormSubmit() {
-    onCloseModal();
+    // onCloseModal();
   }
 
   const {
@@ -122,7 +121,7 @@ function ModalAddTransaction({ onCloseModal }) {
   const arrayKeys = Object.keys(categories.costs);
 
   return (
-    <Modal onCloseModal={onCloseModal}>
+    <>
       <div>
         <p className={s.text}>Добавить транзакцию</p>
 
@@ -232,13 +231,13 @@ function ModalAddTransaction({ onCloseModal }) {
             placeholder="Комментарий"
             type="text"
             style={{
-              width: '410px',
-              height: '30px',
-              marginTop: '43px',
+              width: '280px',
+              height: '74px',
+              marginTop: '40px',
               paddingLeft: '20px',
 
-              marginLeft: '65px',
-              marginRight: '65px',
+              marginLeft: 'auto',
+              marginRight: 'auto',
             }}
             onChange={handleChange}
           />
@@ -247,12 +246,12 @@ function ModalAddTransaction({ onCloseModal }) {
               <Button
                 type={'submit'}
                 style={{
-                  marginTop: '50px',
+                  marginTop: '40px',
                   width: '300px',
                   height: '50px',
                   borderRadius: '20px',
-                  marginLeft: '120px',
-                  marginRight: '120px',
+                  //   marginLeft: '120px',
+                  //   marginRight: '120px',
                   fontFamily: 'Circe',
                   fontSize: '18px',
                   fontWeight: '400',
@@ -265,14 +264,14 @@ function ModalAddTransaction({ onCloseModal }) {
               </Button>
               <Button
                 type="button"
-                onClick={onCloseModal}
+                // onClick={onCloseModal}
                 style={{
                   marginTop: '20px',
                   width: '300px',
                   height: '50px',
                   borderRadius: '20px',
-                  marginLeft: '120px',
-                  marginRight: '120px',
+                  //   marginLeft: '120px',
+                  //   marginRight: '120px',
                   boxShadow: '0 0 1px 1px #4A56E2',
                   fontFamily: 'Circe',
                   fontSize: '18px',
@@ -287,12 +286,9 @@ function ModalAddTransaction({ onCloseModal }) {
             </ThemeProvider>
           </div>
         </form>
-        <button className={s.closebtn} type="button" onClick={onCloseModal}>
-          <img src={close} className={s.close} alt="closebtn" />
-        </button>
       </div>
-    </Modal>
+    </>
   );
 }
 
-export default ModalAddTransaction;
+export default MobileModalAddTransaction;
