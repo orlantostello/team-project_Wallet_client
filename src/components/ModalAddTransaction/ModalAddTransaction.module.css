@@ -1,5 +1,5 @@
 .text {
-  font-family: 'Poppins';
+  font-family: 'Segoeui';
   font-weight: 400;
   font-size: 30px;
   line-height: 1.6;
@@ -7,9 +7,11 @@
   text-align: center;
   color: var(--black-text);
   margin-bottom: 40px;
+  margin-top: 0;
 }
 
 .balancedate {
+  position: relative;
   display: flex;
 
   justify-content: center;
@@ -24,7 +26,7 @@
 }
 
 .date {
-  font-family: 'Poppins';
+  font-family: 'Segoeui';
   font-weight: 400;
   font-size: 18px;
   padding-left: 20px;
@@ -47,15 +49,17 @@
   position: absolute;
   /* bottom: 0px; */
   right: -20px;
-  top: o;
+  top: 0;
 }
 
 .togolbar {
   display: flex;
   align-items: center;
   justify-content: center;
+  margin-bottom: 40px;
 }
 .plus {
+  position: relative;
   font-family: 'Circe';
   font-weight: 700;
   font-size: 16px;
@@ -63,7 +67,18 @@
   color: #24cca7;
   margin-right: 60px;
 }
+
+.plus_noactive {
+  font-family: 'Circe';
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 1.6;
+  color: #e0e0e0;
+  margin-right: 60px;
+}
+
 .minus {
+  position: relative;
   font-family: 'Circe';
   font-weight: 700;
   font-size: 16px;
@@ -71,9 +86,62 @@
   margin-left: 60px;
 }
 
+.minus_noactive {
+  font-family: 'Circe';
+  font-weight: 700;
+  font-size: 16px;
+  color: #e0e0e0;
+  margin-left: 60px;
+}
+
 .categories {
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
   margin-bottom: 40px;
+}
+.notification {
+  position: absolute;
+  bottom: -42px;
+  left: 65px;
+  font-family: Circe;
+  font-size: 16px;
+  line-height: 1.1;
+  color: #ff4800;
+  text-align: center;
+}
+
+.notification_amount {
+  position: absolute;
+  bottom: -38px;
+  left: 65px;
+
+  font-family: Circe;
+  font-size: 16px;
+  line-height: 1.1;
+  color: #ff4800;
+  text-align: center;
+}
+
+input[type='number'] {
+  -moz-appearance: textfield;
+  -webkit-appearance: textfield;
+  appearance: textfield;
+}
+
+input[type='number']::-webkit-outer-spin-button,
+input[type='number']::-webkit-inner-spin-button {
+  display: none;
+}
+
+.closebtn {
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  background-color: #fff;
+  /* border-radius: 50%; */
+  top: 20px;
+  right: 20px;
+  border: none;
 }
