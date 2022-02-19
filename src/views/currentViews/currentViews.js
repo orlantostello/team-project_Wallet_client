@@ -5,7 +5,7 @@ import Container from '../../components/Container';
 function CurrentViews() {
   return (
     <>
-    <Header />    
+      <Header />    
       <Body />    
     </>
   );

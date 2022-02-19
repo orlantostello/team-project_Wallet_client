@@ -24,7 +24,7 @@ function App() {
           <Route exact path="/register" redirectTo="/current" element={<Register />} />
           <Route
             exact
-            path="/current"
+            path="current/*"
             element={
               <PrivateRoute redirectTo="/login">
                 <Current />
