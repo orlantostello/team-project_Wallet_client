@@ -12,34 +12,38 @@
 
 .balancedate {
   position: relative;
-  /* display: flex;
-
-  justify-content: center; */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .datecalendar {
   position: relative;
 
   display: flex;
-
-  width: 190px;
+  align-items: center;
+  min-width: 280px;
+  height: 34px;
+  margin-top: 40px;
 }
 
 .date {
   font-family: 'Segoeui';
   font-weight: 400;
   font-size: 18px;
-  padding-left: 20px;
-  min-width: 280px;
-  /* margin-right: 44px; */
+
+  margin-left: 20px;
+  margin-right: 134px;
+
   color: var(--black-text);
 }
 
 .date::after {
   content: '';
-  bottom: 0px;
+  bottom: -10px;
   left: 0;
   position: absolute;
+
   /* width: 100%; */
   min-width: 100%;
   height: 1px;
@@ -47,17 +51,11 @@
   background-color: #8b8686;
 }
 
-.calendar {
-  position: absolute;
-  right: -20px;
-  top: 0;
-}
-
 .togolbar {
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: 40px;
+  /* margin-bottom: 10px; */
 }
 .plus {
   position: relative;
@@ -100,12 +98,16 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  /* width: 280px; */
+  min-width: 280px;
+  padding-left: 10px;
+  padding-right: 10px;
   margin-bottom: 40px;
 }
 .notification {
   position: absolute;
   bottom: -42px;
-  left: 65px;
+  left: 20%;
   font-family: Circe;
   font-size: 16px;
   line-height: 1.1;
@@ -135,8 +137,14 @@ input[type='number']::-webkit-outer-spin-button,
 input[type='number']::-webkit-inner-spin-button {
   display: none;
 }
+
 .buttongroup {
   display: flex;
+  flex-direction: column;
   align-items: center;
+}
+
+.comment {
+  display: flex;
   justify-content: center;
 }

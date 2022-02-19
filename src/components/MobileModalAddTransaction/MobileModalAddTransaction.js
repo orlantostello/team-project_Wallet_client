@@ -171,6 +171,9 @@ function MobileModalAddTransaction() {
                 value={values.category}
                 onChange={handleChange}
                 label="Category"
+                style={{
+                  width: '100%',
+                }}
               >
                 {categories && checked
                   ? arrayKeys.map(el => (
@@ -199,10 +202,9 @@ function MobileModalAddTransaction() {
               value={values.amount}
               placeholder="0.00"
               style={{
-                width: '190px',
-                paddingLeft: '80px',
-                paddingRight: 'auto',
-                marginRight: '30px',
+                minWidth: '280px',
+                height: '34px',
+                paddingLeft: '20px',
               }}
               onChange={handleChange}
               required
@@ -223,24 +225,24 @@ function MobileModalAddTransaction() {
             )}
           </div>
 
-          <label htmlFor={'comment'} />
-          <Input
-            id={'comment'}
-            name={'comment'}
-            value={values.comment}
-            placeholder="Комментарий"
-            type="text"
-            style={{
-              width: '280px',
-              height: '74px',
-              marginTop: '40px',
-              paddingLeft: '20px',
+          <div className={s.comment}>
+            <label htmlFor={'comment'} />
+            <Input
+              id={'comment'}
+              name={'comment'}
+              value={values.comment}
+              placeholder="Комментарий"
+              type="text"
+              style={{
+                width: '280px',
+                height: '74px',
+                marginTop: '40px',
+                paddingLeft: '20px',
+              }}
+              onChange={handleChange}
+            />
+          </div>
 
-              marginLeft: 'auto',
-              marginRight: 'auto',
-            }}
-            onChange={handleChange}
-          />
           <div className={s.buttongroup}>
             <ThemeProvider theme={theme}>
               <Button
@@ -250,8 +252,6 @@ function MobileModalAddTransaction() {
                   width: '300px',
                   height: '50px',
                   borderRadius: '20px',
-                  //   marginLeft: '120px',
-                  //   marginRight: '120px',
                   fontFamily: 'Circe',
                   fontSize: '18px',
                   fontWeight: '400',
@@ -270,8 +270,6 @@ function MobileModalAddTransaction() {
                   width: '300px',
                   height: '50px',
                   borderRadius: '20px',
-                  //   marginLeft: '120px',
-                  //   marginRight: '120px',
                   boxShadow: '0 0 1px 1px #4A56E2',
                   fontFamily: 'Circe',
                   fontSize: '18px',
