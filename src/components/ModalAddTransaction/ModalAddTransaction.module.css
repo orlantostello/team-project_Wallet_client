@@ -47,7 +47,6 @@
 
 .calendar {
   position: absolute;
-  /* bottom: 0px; */
   right: -20px;
   top: 0;
 }
@@ -140,7 +139,6 @@ input[type='number']::-webkit-inner-spin-button {
   width: 16px;
   height: 16px;
   background-color: #fff;
-  /* border-radius: 50%; */
   top: 20px;
   right: 20px;
   border: none;
@@ -153,4 +151,15 @@ input[type='number']::-webkit-inner-spin-button {
   height: 16px;
   top: 0px;
   left: 0px;
+}
+
+.buttongroup {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.comment {
+  display: flex;
+  justify-content: center;
 }

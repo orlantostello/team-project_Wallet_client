@@ -224,24 +224,24 @@ function ModalAddTransaction({ onCloseModal }) {
             )}
           </div>
 
-          <label htmlFor={'comment'} />
-          <Input
-            id={'comment'}
-            name={'comment'}
-            value={values.comment}
-            placeholder="Комментарий"
-            type="text"
-            style={{
-              width: '410px',
-              height: '30px',
-              marginTop: '43px',
-              paddingLeft: '20px',
+          <div className={s.comment}>
+            <label htmlFor={'comment'} />
+            <Input
+              id={'comment'}
+              name={'comment'}
+              value={values.comment}
+              placeholder="Комментарий"
+              type="text"
+              style={{
+                width: '410px',
+                height: '30px',
+                marginTop: '43px',
+                paddingLeft: '20px',
+              }}
+              onChange={handleChange}
+            />
+          </div>
 
-              marginLeft: '65px',
-              marginRight: '65px',
-            }}
-            onChange={handleChange}
-          />
           <div className={s.buttongroup}>
             <ThemeProvider theme={theme}>
               <Button
@@ -251,8 +251,8 @@ function ModalAddTransaction({ onCloseModal }) {
                   width: '300px',
                   height: '50px',
                   borderRadius: '20px',
-                  marginLeft: '120px',
-                  marginRight: '120px',
+                  // marginLeft: '120px',
+                  // marginRight: '120px',
                   fontFamily: 'Circe',
                   fontSize: '18px',
                   fontWeight: '400',
@@ -271,8 +271,8 @@ function ModalAddTransaction({ onCloseModal }) {
                   width: '300px',
                   height: '50px',
                   borderRadius: '20px',
-                  marginLeft: '120px',
-                  marginRight: '120px',
+                  // marginLeft: '120px',
+                  // marginRight: '120px',
                   boxShadow: '0 0 1px 1px #4A56E2',
                   fontFamily: 'Circe',
                   fontSize: '18px',
