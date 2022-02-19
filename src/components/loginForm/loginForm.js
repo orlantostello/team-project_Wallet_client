@@ -19,7 +19,8 @@ export default function LoginForm() {
   const navigate = useNavigate();
 
   const isLoading = useSelector(usersSelectors.getIsFetchingCurrent);
-  const isError = useSelector(usersSelectors.getError);
+  const isError = false;
+  // const isError = useSelector(usersSelectors.getError);
   const handleOnClickToRegister = () => {
     navigate('/register');
   };
