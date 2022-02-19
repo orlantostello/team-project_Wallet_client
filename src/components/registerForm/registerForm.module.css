@@ -16,7 +16,7 @@
 
 .input {
   width: inherit;
-  font-family: Circe;
+  font-family: 'Circe';
   font-size: 18px;
   line-height: 1.47;
   border: none;
@@ -26,9 +26,8 @@
   position: absolute;
   margin-left: 70px;
   margin-top: -34px;
-  /* top: 0; */
 
-  font-family: Circe;
+  font-family: 'Circe';
   font-size: 12px;
   line-height: 1.1;
   color: #ff4800;
@@ -40,7 +39,7 @@
   height: 50px;
   margin: 0 auto 20px;
 
-  font-family: Circe;
+  font-family: 'Circe';
   font-size: 18px;
   line-height: 1.5;
   text-transform: uppercase;
@@ -59,8 +58,6 @@
 
 .registerBtn:hover,
 .registerBtn:focus {
-  /* color: #ffffff; */
-
   box-shadow: 0px 0px 6px 0px #00000085;
 }
 

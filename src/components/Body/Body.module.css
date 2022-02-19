@@ -1,0 +1,18 @@
+.container {
+  margin: 0 auto;
+  width: 303px;
+  align-items: flex-start;
+}
+
+@media screen and (min-width: 768px) {
+  .container {
+    width: 705px;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .container {
+    display: flex;
+    width: 1192px;
+  }
+}

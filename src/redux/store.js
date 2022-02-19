@@ -9,9 +9,9 @@ import {
   PURGE,
   REGISTER,
 } from 'redux-persist';
-import storage from 'redux-persist/lib/storage'; // defaults to localStorage for web
-import { contactsReducer } from './contacts';
-import { authReducer } from './auth';
+import storage from 'redux-persist/lib/storage';
+// import { tickersReducer } from './tickers';
+import { usersReducer } from './users';
 
 const middleware = [
   ...getDefaultMiddleware({
@@ -21,16 +21,16 @@ const middleware = [
   }),
 ];
 
-const authPersistConfig = {
-  key: 'auth',
+const usersPersistConfig = {
+  key: 'users',
   storage,
   whitelist: ['token'],
 };
 
 export const store = configureStore({
   reducer: {
-    auth: persistReducer(authPersistConfig, authReducer),
-    contacts: contactsReducer,
+    users: persistReducer(usersPersistConfig, usersReducer),
+    // tickers: tickersReducer,
   },
   middleware,
   devTools: process.env.NODE_ENV === 'development',

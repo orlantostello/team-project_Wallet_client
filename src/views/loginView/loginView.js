@@ -1,15 +1,21 @@
-import Media from "react-media";
+import Media from 'react-media';
+import { useSelector } from 'react-redux';
+import { Navigate } from 'react-router-dom';
 
-import LoginForm from "../../components/loginForm/loginForm";
-import { ReactComponent as MainIcon } from "../../images/loginMainIcon.svg";
-import { ReactComponent as WalletLogo } from "../../images/walletLogo.svg";
+import { usersSelectors } from '../../redux/users';
+import LoginForm from '../../components/loginForm/loginForm';
+import { ReactComponent as MainIcon } from '../../images/loginMainIcon.svg';
+import { ReactComponent as WalletLogo } from '../../images/walletLogo.svg';
 
-import s from "./loginView.module.css";
+import s from './loginView.module.css';
 
-export default function LoginView() {
-  return (
+export default function LoginView({ redirectTo = '/', ...props }) {
+  const isLoggedIn = useSelector(usersSelectors.getIsLoggedIn);
+  return isLoggedIn ? (
+    <Navigate to={redirectTo} />
+  ) : (
     <Media query={{ maxWidth: 767 }}>
-      {(matches) =>
+      {matches =>
         matches ? (
           <div className={s.formWrapper}>
             <WalletLogo className={s.logo} />

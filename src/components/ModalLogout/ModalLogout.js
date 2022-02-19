@@ -1,14 +1,14 @@
 import { useEffect } from 'react';
 import { createPortal } from 'react-dom';
-// import { useDispatch } from 'react-redux';
-// import { authOperations } from 'redux/auth';
+import { useDispatch } from 'react-redux';
+import { usersOperations } from '../../redux/users';
 import { Button } from '@mui/material';
 import s from './ModalLogout.module.css';
 
 const modalRoot = document.querySelector('#modal-root');
 
 function ModalLogout({ onCloseModal }) {
-  // const dispatch = useDispatch();
+  const dispatch = useDispatch();
 
   useEffect(() => {
     const handleKeyDown = e => {
@@ -31,7 +31,7 @@ function ModalLogout({ onCloseModal }) {
   };
 
   function inLogout() {
-    // dispatch(authOperations.logOut());
+    dispatch(usersOperations.logOut());
     onCloseModal();
   }
 
