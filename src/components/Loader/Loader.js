@@ -1,13 +1,13 @@
-// import { useState } from 'react';
-import CircularProgress from '@mui/material/CircularProgress';
-import Box from '@mui/material/Box';
+import { ThreeDots } from 'react-loader-spinner';
+
+import s from './Loader.module.css';
 
 export default function Loader() {
-  //   const [load, setLoad] = useState(false);
-
   return (
-    <Box sx={{ display: 'flex' }}>
-      <CircularProgress />
-    </Box>
+    <div className={s.box}>
+      <div className={s.spinner}>
+        <ThreeDots color="#24cca7" width={100} />
+      </div>
+    </div>
   );
 }
