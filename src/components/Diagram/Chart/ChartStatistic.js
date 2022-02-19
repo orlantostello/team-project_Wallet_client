@@ -35,10 +35,10 @@ export default function ChartStatistic({ costsSumStatistic, costsCategoryChart, 
                 options={options}               
             />  
             
-            <pre
-                className={s.chartText}>                
-                &#8372; {costsSumStatistic}    
-                </pre>    
+            
+            <pre className={s.chartText}>              
+               &#8372; {costsSumStatistic}    
+            </pre>
             
         </div>               
     )     

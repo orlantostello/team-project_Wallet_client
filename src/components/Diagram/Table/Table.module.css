@@ -1,25 +1,12 @@
-/* .tableWrap {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-} */
-
 ul {
   list-style: none;
-  /* width: 100%; */
 }
 
 li {
   display: flex;
-  /* justify-content: space-between; */
+  justify-content: space-between;
   align-items: center;
 }
-/* li:not(:last-child) {
-  /* margin-bottom: 10px; */
-/* padding: 5px; */
-/* gap: 0.5rem; */
-/* border-bottom: 1px solid gray; */
-/*} */
 
 .tableTitle,
 .tableTitleCosts,
@@ -27,7 +14,7 @@ li {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  font-family: 'Circe';
+  font-family: 'Circe', sans-serif;
   font-weight: 700;
   font-style: normal;
 }

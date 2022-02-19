@@ -2,7 +2,7 @@ import s from './Body.module.css';
 import LeftBar from '../LeftBar';
 import Rate from '../Rate';
 import List from '../List/List'
-import Diagram from '../Diagram/DiagramTab'
+import Diagram from '../Diagram/DiagramTab';
 import { BrowserRouter as Router, Route, Routes} from 'react-router-dom';
 
 
