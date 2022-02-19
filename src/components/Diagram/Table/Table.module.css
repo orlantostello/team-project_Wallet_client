@@ -14,7 +14,7 @@ li {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  font-family: 'Circe';
+  font-family: 'Circe', sans-serif;
   font-weight: 700;
   font-style: normal;
 }

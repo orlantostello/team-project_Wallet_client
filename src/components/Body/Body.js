@@ -10,14 +10,14 @@ import ButtonAddTransactions from '../ButtonAddTransactions';
 import s from './Body.module.css';
 
 function Body() {
-  const [showModal, setShowModa] = useState(false);
+  const [showModal, setShowModal] = useState(false);
 
   const onOpenModal = () => {
-    setShowModa(true);
+    setShowModal(true);
   };
 
   const onCloseModal = () => {
-    setShowModa(false);
+    setShowModal(false);
   };
   return (
     <div className={s.container}>
