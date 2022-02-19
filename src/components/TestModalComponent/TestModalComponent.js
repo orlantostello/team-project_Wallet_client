@@ -1,11 +1,11 @@
 // import React, { useEffect, useState } from 'react';
 import { useState } from 'react';
-import { Button } from '@mui/material';
+// import { Button } from '@mui/material';
 // import ModalLogout from '../ModalLogout';
 // import Modal from '../Modal';
 import ModalAddTransaction from '../ModalAddTransaction';
 import ButtonAddTransactions from '../ButtonAddTransactions';
-import plusbtn from '../ModalAddTransaction/plusbtn.svg';
+// import plusbtn from '../ModalAddTransaction/plusbtn.svg';
 
 function TestModalComponent() {
   const [showModal, setShowModa] = useState(false);
@@ -20,7 +20,7 @@ function TestModalComponent() {
 
   return (
     <>
-      <Button
+      {/* <Button
         type="button"
         onClick={onOpenModal}
         style={{ marginTop: '05px' }}
@@ -30,7 +30,7 @@ function TestModalComponent() {
       >
         logaut
       </Button>
-      <img src={plusbtn} className="s.calendar" alt="calendar" />
+      <img src={plusbtn} className="s.calendar" alt="calendar" /> */}
       <ButtonAddTransactions onOpenModal={onOpenModal} />
 
       {/* {showModal && <ModalLogout onCloseModal={onCloseModal} />} */}

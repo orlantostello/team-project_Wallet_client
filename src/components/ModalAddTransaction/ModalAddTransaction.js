@@ -10,6 +10,7 @@ import Button from '@mui/material/Button';
 import Box from '@material-ui/core/Box';
 import { useFormik } from 'formik';
 import * as yup from 'yup';
+// import { toast } from 'react-hot-toast';
 
 import s from './ModalAddTransaction.module.css';
 import Switch from '../Switch';
@@ -17,6 +18,7 @@ import calendar from './calendar.svg';
 // import plusbtn from './plusbtn.svg';
 // import minusbtn from './minusbtn.svg';
 // import './minusbtn.svg';
+import close from './close.svg';
 
 function ModalAddTransaction({ onCloseModal }) {
   const [checked, setChecked] = useState(true);
@@ -29,7 +31,7 @@ function ModalAddTransaction({ onCloseModal }) {
     category: yup.string().required('Required'),
     amount: yup.number('Enter your amount').required('Amount is required'),
     comment: yup.string(),
-    isIncome: yup.bool(),
+    isIncome: yup.bool().required('Required'),
   });
 
   const date = new Date();
@@ -37,14 +39,12 @@ function ModalAddTransaction({ onCloseModal }) {
   const formik = useFormik({
     initialValues: {
       category: '',
-      amount: null,
+      amount: '',
       comment: '',
       isIncome: true,
       date: date.getTime(),
     },
-    // onSubmit: values => {
-    //   console.log(JSON.stringify(values, null, 2));
-    // },
+
     validationSchema: validationSchema,
     onSubmit: values => {
       const correctValue = {
@@ -65,11 +65,8 @@ function ModalAddTransaction({ onCloseModal }) {
 
   const {
     values,
-
-    // errors,
-    // touched,
-    isValid,
-    dirty,
+    errors,
+    touched,
     handleSubmit,
     handleChange,
     // handleBlur,
@@ -134,17 +131,26 @@ function ModalAddTransaction({ onCloseModal }) {
 
         <form className={s.form} onSubmit={handleSubmit}>
           <Box className={s.togolbar}>
-            <span className={s.plus}>Доход</span>
-            <label htmlFor={'isIncome'} />
-            <Switch
-              id={'isIncome'}
-              name={'isIncome'}
-              value={values.isIncome}
-              onSwitch={handleChangeChecked}
-              isChecked={checked}
-              onClick={handleChangeChecked}
-            />
-            <span className={s.minus}>Расход</span>
+            {checked ? (
+              <span className={s.plus}>Доход</span>
+            ) : (
+              <span className={s.plus_noactive}>Доход</span>
+            )}
+            <label htmlFor={'isIncome'}>
+              <Switch
+                id={'isIncome'}
+                name={'isIncome'}
+                value={values.isIncome}
+                onSwitch={handleChangeChecked}
+                isChecked={checked}
+                onClick={handleChangeChecked}
+              />
+            </label>
+            {checked ? (
+              <span className={s.minus_noactive}>Расход</span>
+            ) : (
+              <span className={s.minus}>Расход</span>
+            )}
           </Box>
 
           <div className={s.categories}>
@@ -183,11 +189,15 @@ function ModalAddTransaction({ onCloseModal }) {
                     ))}
               </Select>
             </FormControl>
+            {touched.category && errors.category && (
+              <p className={s.notification}>Выберите категорию</p>
+            )}
           </div>
 
           <div className={s.balancedate}>
             <label htmlFor={'amount'} />
             <Input
+              type={'number'}
               id={'amount'}
               name={'amount'}
               value={values.amount}
@@ -212,7 +222,11 @@ function ModalAddTransaction({ onCloseModal }) {
               </p>
               <img src={calendar} className="s.calendar" alt="calendar" />
             </div>
+            {touched.amount && errors.amount && (
+              <p className={s.notification_amount}>Введите коректное значение</p>
+            )}
           </div>
+
           <label htmlFor={'comment'} />
           <Input
             id={'comment'}
@@ -235,7 +249,6 @@ function ModalAddTransaction({ onCloseModal }) {
             <ThemeProvider theme={theme}>
               <Button
                 type={'submit'}
-                /*disable={!(isValid && dirty)}*/
                 style={{
                   marginTop: '50px',
                   width: '300px',
@@ -277,6 +290,9 @@ function ModalAddTransaction({ onCloseModal }) {
             </ThemeProvider>
           </div>
         </form>
+        <button className={s.closebtn} type="button" onClick={onCloseModal}>
+          <img src={close} className={s.close} alt="plusbtn" />
+        </button>
       </div>
     </Modal>
   );
