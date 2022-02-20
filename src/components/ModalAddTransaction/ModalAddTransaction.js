@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import Modal from '../Modal';
 import { Input } from '@mui/material';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import InputLabel from '@mui/material/InputLabel';
@@ -10,15 +9,23 @@ import Button from '@mui/material/Button';
 import Box from '@material-ui/core/Box';
 import { useFormik } from 'formik';
 import * as yup from 'yup';
+import { useSelector, useDispatch } from 'react-redux';
 // import { toast } from 'react-hot-toast';
 
-import s from './ModalAddTransaction.module.css';
+import Modal from '../Modal';
 import Switch from '../Switch';
+import categoriesSelectors from '../../redux/categories/categories-selectors';
+import { transactionsOperations } from '../../redux/transactions';
 import calendar from './calendar.svg';
 import close from './close.svg';
+import s from './ModalAddTransaction.module.css';
 
 function ModalAddTransaction({ onCloseModal }) {
   const [checked, setChecked] = useState(true);
+  const dispatch = useDispatch();
+
+  const categories = useSelector(categoriesSelectors.getAllCategories);
+  const arrayKeys = Object.keys(categories.costs);
 
   const handleChangeChecked = event => {
     setChecked(event.target.checked);
@@ -44,30 +51,17 @@ function ModalAddTransaction({ onCloseModal }) {
 
     validationSchema: validationSchema,
     onSubmit: values => {
-      const correctValue = {
+      const currentValue = {
         ...values,
-
         isIncome: checked,
-
         date: date.getTime(),
       };
-      console.log(JSON.stringify(correctValue, null, 2));
-      onFormSubmit(correctValue);
+      dispatch(transactionsOperations.createTransactions(currentValue));
+      onCloseModal();
     },
   });
 
-  function onFormSubmit() {
-    onCloseModal();
-  }
-
-  const {
-    values,
-    errors,
-    touched,
-    handleSubmit,
-    handleChange,
-    // handleBlur,
-  } = formik;
+  const { values, errors, touched, handleSubmit, handleChange } = formik;
 
   const theme = createTheme({
     palette: {
@@ -82,50 +76,10 @@ function ModalAddTransaction({ onCloseModal }) {
     },
   });
 
-  const categories = {
-    costs: {
-      1: 'clothes',
-      2: 'food',
-      3: 'transport',
-      4: 'sport',
-      5: 'children',
-      6: 'pets',
-      7: 'house',
-      8: 'education',
-      9: 'entertainment',
-      10: 'health',
-      11: 'other',
-    },
-    income: { 1: 'regular', 2: 'irregular' },
-  };
-
-  const categoriesRU = {
-    costs: {
-      1: 'одежда',
-      2: 'еда',
-      3: 'транспорт',
-      4: 'спорт',
-      5: 'дети',
-      6: 'домашние животные',
-      7: 'дом',
-      8: 'образование',
-      9: 'развлечения',
-      10: 'здоровье',
-      11: 'другие',
-    },
-    income: {
-      1: 'регулярные доходы',
-      2: 'нерегулярные доходы',
-    },
-  };
-
-  const arrayKeys = Object.keys(categories.costs);
-
   return (
     <Modal onCloseModal={onCloseModal}>
       <div>
         <p className={s.text}>Добавить транзакцию</p>
-
         <form className={s.form} onSubmit={handleSubmit}>
           <Box className={s.togolbar}>
             {checked ? (
@@ -176,12 +130,12 @@ function ModalAddTransaction({ onCloseModal }) {
                 {categories && checked
                   ? arrayKeys.map(el => (
                       <MenuItem key={el} dataid={el} value={el}>
-                        {categoriesRU.income[el]}
+                        {categories.income[el]}
                       </MenuItem>
                     ))
                   : arrayKeys.map(el => (
                       <MenuItem key={el} value={el}>
-                        {categoriesRU.costs[el]}
+                        {categories.costs[el]}
                       </MenuItem>
                     ))}
               </Select>
@@ -251,8 +205,6 @@ function ModalAddTransaction({ onCloseModal }) {
                   width: '300px',
                   height: '50px',
                   borderRadius: '20px',
-                  // marginLeft: '120px',
-                  // marginRight: '120px',
                   fontFamily: 'Circe',
                   fontSize: '18px',
                   fontWeight: '400',
@@ -271,8 +223,6 @@ function ModalAddTransaction({ onCloseModal }) {
                   width: '300px',
                   height: '50px',
                   borderRadius: '20px',
-                  // marginLeft: '120px',
-                  // marginRight: '120px',
                   boxShadow: '0 0 1px 1px #4A56E2',
                   fontFamily: 'Circe',
                   fontSize: '18px',

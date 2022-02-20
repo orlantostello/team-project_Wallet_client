@@ -5,20 +5,13 @@ const createTransactionError = state => state.transactions.error;
 const getQueryStatistics = state => state.transactions.statistic;
 const getQueryStatisticsError = state => state.transactions.error;
 
-
-
-
-
-const transactionsSelectors ={
-    getAllTransactions,
-    getAllTransactionsError,
-    createTransaction, 
-    createTransactionError,
-    getQueryStatistics,
-    getQueryStatisticsError,
-    
-}
-
-
+const transactionsSelectors = {
+  getAllTransactions,
+  getAllTransactionsError,
+  createTransaction,
+  createTransactionError,
+  getQueryStatistics,
+  getQueryStatisticsError,
+};
 
 export default transactionsSelectors;
