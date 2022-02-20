@@ -1,38 +1,25 @@
-import { useState } from 'react';
-import { BrowserRouter as Router, Route, Routes} from 'react-router-dom';
+// eslint-disable-next-line no-unused-vars
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 
 import LeftBar from '../LeftBar';
 import Rate from '../Rate';
-import List from '../List/List'
-import Diagram from '../Diagram/DiagramTab'
-import ModalAddTransaction from '../ModalAddTransaction';
-import ButtonAddTransactions from '../ButtonAddTransactions';
+import List from '../List/List';
+import Diagram from '../Diagram/DiagramTab';
 import s from './Body.module.css';
 
 function Body() {
-  const [showModal, setShowModal] = useState(false);
-
-  const onOpenModal = () => {
-    setShowModal(true);
-  };
-
-  const onCloseModal = () => {
-    setShowModal(false);
-  };
   return (
-    <div class={s.backgroundImageCVR}>
-    <div class={s.backgroundImage}></div>
-    <div className={s.container}>
-      <LeftBar />
-      <ButtonAddTransactions onOpenModal={onOpenModal} />
-      {showModal && <ModalAddTransaction onCloseModal={onCloseModal} />}
+    <div className={s.backgroundImageCVR}>
+      <div className={s.backgroundImage}></div>
+      <div className={s.container}>
+        <LeftBar />
         <Routes>
-          <Route exact path="" element={<List/>} />
-          <Route exact path="diagram" element={<Diagram/>} />
-          <Route exact path="rate" element={<Rate />} />
+          <Route exact="true" path="" element={<List />} />
+          <Route exact="true" path="diagram" element={<Diagram />} />
+          <Route exact="true" path="rate" element={<Rate />} />
         </Routes>
       </div>
-      </div>
+    </div>
   );
 }
 export default Body;

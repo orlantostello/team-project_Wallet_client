@@ -1,5 +1,9 @@
+import { useState } from 'react';
+
 import Header from './Header/Header';
 import Item from './Item/Item';
+import ButtonAddTransactions from '../ButtonAddTransactions';
+import ModalAddTransaction from '../ModalAddTransaction';
 
 const data = [
   {
@@ -60,13 +64,26 @@ const categories = {
 };
 
 function List() {
+  const [showModal, setShowModal] = useState(false);
+
+  const onOpenModal = () => {
+    setShowModal(true);
+  };
+
+  const onCloseModal = () => {
+    setShowModal(false);
+  };
   return (
-    <ul>
-      <Header />
-      {data.map(elem => (
-        <Item key={elem._id} elem={elem} categories={categories} />
-      ))}
-    </ul>
+    <>
+      <ul>
+        <Header />
+        {data.map(elem => (
+          <Item key={elem._id} elem={elem} categories={categories} />
+        ))}
+      </ul>
+      <ButtonAddTransactions onOpenModal={onOpenModal} />
+      {showModal && <ModalAddTransaction onCloseModal={onCloseModal} />}
+    </>
   );
 }
 
