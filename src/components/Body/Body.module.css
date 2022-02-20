@@ -6,7 +6,27 @@
 }
 
 @media screen and (min-width: 768px) {
+  .backgroundImageCVR {
+    position: relative;
+    padding: 15px;
+  }
+  .backgroundImage {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    background: url('../../images/ellipse-blue.svg'), url('../../images/ellipse-pink.svg');
+    background-repeat: no-repeat;
+    background-position: left bottom, right top;
+    background-attachment: fixed;
+    z-index: 1;
+    filter: blur(50px);
+  }
+
   .container {
+    position: relative;
+    z-index: 2;
     width: 705px;
   }
 }
