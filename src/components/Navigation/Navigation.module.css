@@ -19,7 +19,7 @@
 .link {
   position: relative;
   text-align: center;
-  background-color: #6e78e8;
+  background-color: var(--not-active-blue);
   border-radius: 8px;
   display: block;
   width: 38px;
@@ -29,7 +29,7 @@
 .activeLink {
   position: relative;
   text-align: center;
-  background-color: #4a56e2;
+  background-color: var(--active-blue);
   border-radius: 8px;
   display: block;
   width: 38px;
@@ -37,7 +37,7 @@
 }
 
 .svg {
-  color: white;
+  color: var(--white-text);
   position: absolute;
   top: 50%;
   left: 50%;
@@ -108,15 +108,6 @@
     padding-bottom: 30px;
   }
 
-  .item {
-  }
-
-  .link {
-  }
-
-  .activeLink {
-  }
-
   .svg {
     width: 14px;
     height: 14px;
@@ -124,8 +115,5 @@
 
   .itemTitle {
     padding-left: 41px;
-  }
-
-  .icon {
   }
 }

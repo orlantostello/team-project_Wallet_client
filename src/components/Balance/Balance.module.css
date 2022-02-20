@@ -1,7 +1,7 @@
 .Balance {
   width: 280px;
   height: 80px;
-  background-color: white;
+  background-color: var(--white-text);
   border-radius: 30px;
   margin-left: auto;
   margin-right: auto;
@@ -9,7 +9,7 @@
 }
 
 .BalanceName {
-  color: #a6a6a6;
+  color: var(--balance-grey);
   font-family: 'Circe', sans-serif;
   font-style: normal;
   font-weight: normal;
@@ -19,7 +19,7 @@
 }
 
 .BalanceValue {
-  color: #000000;
+  color: var(--black-text);
   font-family: 'Segoeui', sans-serif;
   font-style: normal;
   font-weight: 700;
