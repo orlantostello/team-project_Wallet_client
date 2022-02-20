@@ -1,86 +1,87 @@
-  .wrapper {
-    width:100%;
-    height: 60px;
-    padding: 15px 20px 15px 20px;
-    background-color: var(--white-text);
-  }
-    .container {
-    margin: 0 auto;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    height: 30px;
-  }
+.wrapper {
+  height: 60px;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  margin: 0 auto;
+  background-color: var(--white-text);
+}
+.container {
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 280px;
+}
 
-  .logoBox, .userInfo {
-    display: flex;
-    align-items: center;
-  }
+.logoBox,
+.userInfo {
+  display: flex;
+  align-items: center;
+}
 
 .logo {
-    margin-right: 10px;
-    width:30px;
+  margin-right: 10px;
+  width: 30px;
+}
+
+.logout {
+  display: flex;
+  align-items: center;
+  background-color: transparent;
+  border: none;
+  outline: none;
+  cursor: pointer;
+}
+
+.logoutSvg {
+  fill: var(--grey-text);
+}
+
+.userName {
+  color: var(--grey-text);
+  font-size: 18px;
+  line-height: 1.5;
+  margin-right: 10px;
+}
+.exit {
+  display: none;
+  color: var(--grey-text);
+  font-size: 18px;
+}
+
+@media screen and (min-width: 768px) {
+  .wrapper {
+    height: 80px;
+    padding-top: 20px;
+    padding-bottom: 20px;
   }
-  
-  .logout {
-    display:flex;
-    align-items: center;
-    background-color: transparent;
-    border: none;
-    outline: none;
-    cursor: pointer;
+
+  .container {
+    width: 688px;
   }
-  
-  .logoutSvg {
-    fill: var(--grey-text);
+  .logo {
+    width: 40px;
+    margin-right: 20px;
   }
-  
+
+  .logoNameVector {
+    height: 40px;
+    width: 121px;
+  }
+
   .userName {
-    color: var(--grey-text);
-    font-size: 18px;
-    line-height:1.5;
-    margin-right: 10px;
-  }
-  .exit {
-    display:none;
-    color: var(--grey-text);
-    font-size: 18px;
-  }
-  
-  @media screen and (min-width: 768px) {
-    .wrapper {
-      height: 80px;
-      padding: 20px 40px 20px 40px;
-    }
-  
-    .container {
-      height: 40px;
-    }
-    .logo {
-      width:40px;
-      margin-right:20px;
-    }
-
-    .logoNameVector {
-      height: 40px;
-      width:121px;
-    }
-
-    .userName {
     margin-right: 15px;
-    padding-right: 15px; 
+    padding-right: 15px;
     border-right: 1px solid;
   }
-    .exit {
-    display:inline;
-    margin-left:10px;
+  .exit {
+    display: inline;
+    margin-left: 10px;
   }
-  }
-
-  
-  @media screen and (min-width: 1280px) {
-    .wrapper {
-padding-left:85px;
-padding-right:85px;
 }
+
+@media screen and (min-width: 1280px) {
+  .container {
+    width: 1110px;
   }
+}
