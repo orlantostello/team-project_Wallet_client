@@ -12,6 +12,7 @@ import {
 import storage from 'redux-persist/lib/storage';
 // import { tickersReducer } from './tickers';
 import { usersReducer } from './users';
+import {categoriesReduser} from './categories'
 
 const middleware = [
   ...getDefaultMiddleware({
@@ -27,9 +28,16 @@ const usersPersistConfig = {
   whitelist: ['token'],
 };
 
+const categoriesPersistConfig = {
+  key: 'categories',
+  storage,
+  whitelist: ['token'],
+};
+
 export const store = configureStore({
   reducer: {
     users: persistReducer(usersPersistConfig, usersReducer),
+    categories: persistReducer(categoriesPersistConfig, categoriesReduser),
     // tickers: tickersReducer,
   },
   middleware,
