@@ -2,6 +2,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { useFormik } from 'formik';
 import * as yup from 'yup';
+import ProgressBar from '@ramonak/react-progress-bar';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
@@ -58,6 +59,9 @@ export default function RegisterForm() {
   const { values, errors, touched, isValid, dirty, handleSubmit, handleChange, handleBlur } =
     formik;
 
+  const countPasswordLength = value => value.length.toString();
+  const countConfirmPasswordLength = value => value.length.toString();
+
   // console.log('isValid && !dirty: ', isValid && !dirty);
 
   return (
@@ -108,6 +112,20 @@ export default function RegisterForm() {
         </label>
         {touched.confirmPassword && errors.confirmPassword && (
           <p className={s.notification}>{errors.confirmPassword}</p>
+        )}
+
+        {values.confirmPassword && (
+          <ProgressBar
+            className={s.progressBar}
+            completed={countPasswordLength(values.confirmPassword)}
+            bgColor="#24cca7"
+            height="2px"
+            borderRadius="10%"
+            isLabelVisible={false}
+            baseBgColor="#f40d0d"
+            labelColor="#11ff40"
+            maxCompleted={countConfirmPasswordLength(values.password)}
+          />
         )}
 
         <label htmlFor={'name'} className={s.field}>
