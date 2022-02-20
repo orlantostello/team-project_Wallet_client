@@ -12,7 +12,8 @@ import {
 import storage from 'redux-persist/lib/storage';
 // import { tickersReducer } from './tickers';
 import { usersReducer } from './users';
-import {categoriesReduser} from './categories'
+import {categoriesReduser} from './categories';
+import {transactionsSlice } from './transactions';
 
 const middleware = [
   ...getDefaultMiddleware({
@@ -34,10 +35,19 @@ const categoriesPersistConfig = {
   whitelist: ['token'],
 };
 
+const transactionsPersistConfig = {
+  key: 'transactions',
+  storage,
+  whitelist: ['token'],
+};
+
 export const store = configureStore({
   reducer: {
-    users: persistReducer(usersPersistConfig, usersReducer),
-    categories: persistReducer(categoriesPersistConfig, categoriesReduser),
+  users: persistReducer(usersPersistConfig, usersReducer),
+  categories: persistReducer(categoriesPersistConfig, categoriesReduser),
+  transactions: persistReducer(transactionsPersistConfig, transactionsSlice),
+  
+  
     // tickers: tickersReducer,
   },
   middleware,
