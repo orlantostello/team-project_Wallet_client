@@ -46,7 +46,8 @@ export const store = configureStore({
   users: persistReducer(usersPersistConfig, usersReducer),
   categories: persistReducer(categoriesPersistConfig, categoriesReduser),
   transactions: persistReducer(transactionsPersistConfig, transactionsSlice),
-  // transactions: persistReducer(transactionsPersistConfig, transactionsReducer),
+  
+  
     // tickers: tickersReducer,
   },
   middleware,

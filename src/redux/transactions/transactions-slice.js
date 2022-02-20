@@ -62,4 +62,4 @@ const transactionsSlice = createSlice({
   },
 });
 
-export default transactionsSlice.slice;
+export default transactionsSlice.reducer;
