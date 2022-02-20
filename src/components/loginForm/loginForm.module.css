@@ -20,7 +20,6 @@
   font-size: 18px;
   line-height: 1.47;
   border: none;
-  outline: none;
 }
 
 .notification {
@@ -45,7 +44,22 @@
   line-height: 1.5;
   text-transform: uppercase;
 
+  border: solid 1px;
   border-radius: 20px;
+}
+
+.logInBtn {
+  color: #ffffff;
+  background-color: #24cca7;
+  border: transparent;
+
+  transition-property: box-shadow;
+  transition-duration: 500ms;
+}
+
+.logInBtn:hover,
+.logInBtn:focus {
+  box-shadow: 0px 0px 6px 0px #00000085;
 }
 
 .registerBtn {
@@ -63,20 +77,6 @@
 
   background-color: #24cca7;
   border: transparent;
-  box-shadow: 0px 0px 6px 0px #00000085;
-}
-
-.logInBtn {
-  color: #ffffff;
-  background-color: #24cca7;
-  border: transparent;
-
-  transition-property: box-shadow;
-  transition-duration: 500ms;
-}
-
-.logInBtn:hover,
-.logInBtn:focus {
   box-shadow: 0px 0px 6px 0px #00000085;
 }
 

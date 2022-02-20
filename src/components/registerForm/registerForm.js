@@ -62,7 +62,10 @@ export default function RegisterForm() {
   const countPasswordLength = value => value.length.toString();
   const countConfirmPasswordLength = value => value.length.toString();
 
+  const buttonStatus = !isValid || Object.keys(touched).length === 0;
+  console.log(buttonStatus);
   // console.log('isValid && !dirty: ', isValid && !dirty);
+  // console.log(!isValid || (Object.keys(touched).length === 0 && touched.constructor === Object));
 
   return (
     <>
@@ -144,9 +147,9 @@ export default function RegisterForm() {
         {touched.name && errors.name && <p className={s.notification}>{errors.name}</p>}
 
         <button
-          // disable={(isValid && !dirty).toString()}
-          type="submit"
-          className={s.registerBtn + ' ' + s.btn}
+          disabled={buttonStatus}
+          type={'submit'}
+          className={buttonStatus ? s.btn : [s.registerBtn, s.btn].join(' ')}
         >
           Регистрация
         </button>
