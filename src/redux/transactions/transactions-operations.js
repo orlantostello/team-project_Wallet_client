@@ -1,37 +1,17 @@
-import axios from "axios";
-import { createAsyncThunk } from "@reduxjs/toolkit";
+import axios from 'axios';
+import { createAsyncThunk } from '@reduxjs/toolkit';
 
-// axios.defaults.baseURL = 'https://afternoon-spire-55607.herokuapp.com';
+const getAllTransactions = createAsyncThunk('transactions/transactions/all', async credentials => {
+  return await axios.get('/transactions', credentials);
+});
 
-// const token = {
-//   set(token) {
-//     axios.defaults.headers.common.Authorization = `Bearer ${token}`;
-//   },
-//   unset() {
-//     axios.defaults.headers.common.Authorization = '';
-//   },
-// };
+const createTransactions = createAsyncThunk('transactions/transactions', async credentials => {
+  return await axios.post('/transactions', credentials);
+});
 
-const getAllTransactions = createAsyncThunk(
-  "transactions/transactions",
-  async (credentials) => {
-    return await axios.get("/transactions", credentials);
-  }
-);
-
-const createTransactions = createAsyncThunk(
-  "transactions/transactions",
-  async (credentials) => {
-    return await axios.post("/transactions", credentials);
-  }
-);
-
-const getQueryStatistics = createAsyncThunk(
-  "transactions/statistics",
-  async (credentials) => {
-    return await axios.get("/transactions/statistics", credentials);
-  }
-);
+const getQueryStatistics = createAsyncThunk('transactions/diagram', async credentials => {
+  return await axios.get('/transactions/period', credentials);
+});
 
 const operations = {
   getAllTransactions,
