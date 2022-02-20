@@ -50,13 +50,9 @@ export default function LoginForm() {
     },
   });
 
-  const { values, errors, touched, isValid, dirty, handleSubmit, handleChange, handleBlur } =
-    formik;
+  const { values, errors, touched, isValid, handleSubmit, handleChange, handleBlur } = formik;
 
   const buttonStatus = !isValid || Object.keys(touched).length === 0;
-  console.log(buttonStatus);
-  // console.log('isValid && !dirty: ', isValid && !dirty);
-  // console.log(!isValid || (Object.keys(touched).length === 0 && touched.constructor === Object));
 
   return (
     <>
