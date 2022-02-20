@@ -31,9 +31,9 @@
 .switchfor::before {
   left: -2px;
   top: -1px;
-  background-color: #ff6596;
+  background-color: var(--pink-text);
 
-  box-shadow: 1px 1px 10px -1px #ff6596;
+  box-shadow: 1px 1px 10px -1px var(--pink-text);
 
   content: '';
   width: 44px;
@@ -54,7 +54,7 @@
   width: 44px;
   height: 44px;
 
-  background-color: #24cca7;
+  background-color: var(--green-text);
   box-shadow: 1px 1px 10px -1px #29b697;
   background-image: url('../ModalAddTransaction/plusbtn.svg');
   background-repeat: no-repeat;
