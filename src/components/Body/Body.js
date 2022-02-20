@@ -20,6 +20,8 @@ function Body() {
     setShowModal(false);
   };
   return (
+    <div class={s.backgroundImageCVR}>
+    <div class={s.backgroundImage}></div>
     <div className={s.container}>
       <LeftBar />
       <ButtonAddTransactions onOpenModal={onOpenModal} />
@@ -29,7 +31,8 @@ function Body() {
           <Route exact path="diagram" element={<Diagram/>} />
           <Route exact path="rate" element={<Rate />} />
         </Routes>
-    </div>
+      </div>
+      </div>
   );
 }
 export default Body;
