@@ -13,10 +13,11 @@
   background-color: var(--white-text);
   border-radius: 30px;
   padding: 15px 20px;
+  margin-top: 40px;
   position: sticky;
 }
 .TableRow:not(:last-child) {
-  margin-right: 55px;
+  margin-right: 50px;
 }
 .TableRow {
   width: 100px;
@@ -25,10 +26,16 @@
 
 @media screen and (min-device-width: 320px) and (max-device-width: 767px) {
   .HomeTableHead {
-    visibility: hidden;
+    display: none;
   }
 }
-
+@media screen and (min-device-width: 768px) {
+  .HomeTableHead {
+    box-sizing: border-box;
+    width: 100%;
+    min-width: 100%;
+  }
+}
 @media screen and (min-device-width: 1280px) {
   .HomeTableHead {
     box-sizing: border-box;
