@@ -24,7 +24,7 @@ function List() {
   };
   return (
     <>
-      <ul>
+      <ul className={s.List}>
         <div className={s.MiddleLine}></div>
 
         <Header />

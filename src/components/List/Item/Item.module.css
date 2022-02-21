@@ -17,7 +17,7 @@
   display: none;
 }
 
-@media screen and (min-device-width: 320px) and (max-device-width: 767px) {
+@media screen and (max-device-width: 767px) {
   .HomeTableBody {
     text-align: end;
     box-sizing: border-box;
@@ -52,7 +52,7 @@
     white-space: pre-wrap;
   }
 }
-@media screen and (min-device-width: 768px) {
+@media screen and (min-width: 768px) {
   .HomeTableBody {
     text-align: start;
   }
@@ -64,7 +64,7 @@
     font-weight: 700;
   }
 }
-@media screen and (min-device-width: 1280px) {
+@media screen and (min-width: 1280px) {
   .HomeTableBody {
     box-sizing: border-box;
     width: 700px;
