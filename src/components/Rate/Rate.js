@@ -16,7 +16,7 @@ function Rate() {
   }, []);
 
   return (
-    <>
+    <>    
       {course && (
         <ul className={s.Rate}>
           <li className={s.RateHead}>
