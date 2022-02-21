@@ -1,15 +1,16 @@
 .HomeTableHead {
   list-style: none;
-  background-color: transparent;
-  max-width: 800px;
-  font-family: 'Circe', sans-serif;
-  justify-content: center;
+
+  justify-content: space-between;
   text-align: center;
   align-items: center;
+
+  font-family: 'Circe', sans-serif;
   font-weight: 700;
   font-size: 18px;
   line-height: 1.5;
-  border: 1px solid #000;
+
+  background-color: var(--white-text);
   border-radius: 30px;
   padding: 15px 20px;
   position: sticky;
@@ -20,4 +21,18 @@
 .TableRow {
   width: 100px;
   white-space: pre-line;
+}
+
+@media screen and (min-device-width: 320px) and (max-device-width: 767px) {
+  .HomeTableHead {
+    visibility: hidden;
+  }
+}
+
+@media screen and (min-device-width: 1280px) {
+  .HomeTableHead {
+    box-sizing: border-box;
+    width: 700px;
+    min-width: 100%;
+  }
 }

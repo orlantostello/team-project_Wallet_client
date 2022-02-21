@@ -1,28 +1,55 @@
 import React from 'react';
+import { HEADER_NAME } from '../../../dictionary/dictionary';
 import s from '../Item/Item.module.css';
+import { capitalizeFirsLetter } from '../../../helper/helper';
 
 function Item({ elem, categories }) {
   return (
     <li className={s.HomeTableBody}>
-      <span className={s.TableRow}>
-        {new Date(elem.date).toLocaleString('ru', {
-          day: 'numeric',
-          month: 'numeric',
-          year: '2-digit',
-        })}
-      </span>
-      <span className={s.TableRow}>{elem.isIncome ? '+' : '-'}</span>
-      <span className={s.TableRow}>
-        {elem.isIncome ? categories.income[elem.category] : categories.costs[elem.category]}
-      </span>
-      <span className={s.TableRow}>{elem.comment}</span>
-      <span
-        className={s.TableRow}
-        style={{ color: elem.isIncome ? 'var(--green-text)' : 'var(--pink-text)' }}
-      >
-        {elem.amount}
-      </span>
-      <span className={s.TableRow}>{elem.currentBalance}</span>
+      <div className={s.box}>
+        <span className={s.test}>{capitalizeFirsLetter(HEADER_NAME.DATA)}</span>
+        <span className={s.TableRow}>
+          {new Date(elem.date).toLocaleString('ru', {
+            day: 'numeric',
+            month: 'numeric',
+            year: '2-digit',
+          })}
+        </span>
+      </div>
+
+      <div className={`${s.box} ${s.center}`}>
+        <span className={s.test}>{capitalizeFirsLetter(HEADER_NAME.TYPE)}</span>
+        <span className={s.TableRow}>{elem.isIncome ? '+' : '-'}</span>
+      </div>
+
+      <div className={s.box}>
+        <span className={s.test}>{capitalizeFirsLetter(HEADER_NAME.CATEGORY)}</span>
+        <span className={s.TableRow}>
+          {capitalizeFirsLetter(
+            elem.isIncome ? categories.income[elem.category] : categories.costs[elem.category],
+          )}
+        </span>
+      </div>
+
+      <div className={s.box}>
+        <span className={s.test}>{capitalizeFirsLetter(HEADER_NAME.COMMENTARY)}</span>
+        <span className={s.TableRow}>{capitalizeFirsLetter(elem.comment)}</span>
+      </div>
+
+      <div className={`${s.box} ${s.center}`}>
+        <span className={s.test}>{capitalizeFirsLetter(HEADER_NAME.AMOUNT)}</span>
+        <span
+          className={`${s.TableRow} ${s.bold}`}
+          style={{ color: elem.isIncome ? 'var(--green-text)' : 'var(--pink-text)' }}
+        >
+          {elem.amount}
+        </span>
+      </div>
+
+      <div className={`${s.box} ${s.center}`}>
+        <span className={s.test}>{capitalizeFirsLetter(HEADER_NAME.BALANCE)}</span>
+        <span className={s.TableRow}>{elem.currentBalance}</span>
+      </div>
     </li>
   );
 }
