@@ -28,6 +28,7 @@
   letter-spacing: 0.03em;
   text-align: center;
   color: var(--black-text);
+  margin-bottom: 20px;
 }
 
 .buttongroup {

@@ -3,12 +3,26 @@ import { createPortal } from 'react-dom';
 import { useDispatch } from 'react-redux';
 import { usersOperations } from '../../redux/users';
 import { Button } from '@mui/material';
+import { createTheme, ThemeProvider } from '@mui/material/styles';
 import s from './ModalLogout.module.css';
 
 const modalRoot = document.querySelector('#modal-root');
 
 function ModalLogout({ onCloseModal }) {
   const dispatch = useDispatch();
+
+  const theme = createTheme({
+    palette: {
+      primary: {
+        main: '#24cca7',
+        contrastText: '#000',
+      },
+      neutral: {
+        main: '#ff6596',
+        contrastText: '#000',
+      },
+    },
+  });
 
   useEffect(() => {
     const handleKeyDown = e => {
@@ -40,31 +54,33 @@ function ModalLogout({ onCloseModal }) {
       <div className={s.content}>
         <p className={s.text}>Вы точно хотите выйти?</p>
         <div className={s.buttongroup}>
-          <Button
-            type="button"
-            onClick={() => inLogout()}
-            style={{
-              marginTop: '05px',
-              marginLeft: 'auto',
-              marginRight: '50px',
-              borderRadius: '05px',
-            }}
-            variant="contained"
-            color="success"
-            size="small"
-          >
-            Да
-          </Button>
-          <Button
-            type="button"
-            onClick={() => onCloseModal()}
-            style={{ marginTop: '05px', marginRight: 'auto', borderRadius: '05px' }}
-            variant="contained"
-            color="error"
-            size="small"
-          >
-            Нет
-          </Button>
+          <ThemeProvider theme={theme}>
+            <Button
+              type="button"
+              onClick={() => inLogout()}
+              style={{
+                marginTop: '05px',
+                marginLeft: 'auto',
+                marginRight: '80px',
+                borderRadius: '05px',
+              }}
+              variant="contained"
+              color="primary"
+              size="small"
+            >
+              Да
+            </Button>
+            <Button
+              type="button"
+              onClick={() => onCloseModal()}
+              style={{ marginTop: '05px', marginRight: 'auto', borderRadius: '05px' }}
+              variant="contained"
+              color="neutral"
+              size="small"
+            >
+              Нет
+            </Button>
+          </ThemeProvider>
         </div>
       </div>
     </div>,
