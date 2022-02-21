@@ -1,9 +1,9 @@
 const getAllTransactions = state => state.transactions.transaction;
-const getAllTransactionsError = state => state.transactions.error;
+const getAllTransactionsError = state => state.transactions.errorTransaction;
 const createTransaction = state => state.transactions.result;
-const createTransactionError = state => state.transactions.error;
+const createTransactionError = state => state.transactions.errorTransaction;
 const getStatistics = state => state.transactions.statistic;
-const getStatisticsError = state => state.transactions.error;
+const getStatisticsError = state => state.transactions.errorStatistic;
 
 const transactionsSelectors = {
   getAllTransactions,

@@ -5,6 +5,7 @@ const initialState = {
   transaction: [],
   errorTransaction: false,
   isFetchingTransaction: false,
+  created: false,
 
   statistic: {
     totalExpenditures: '0',
@@ -46,14 +47,17 @@ const transactionsSlice = createSlice({
 
     [transactionsOperations.createTransactions.fulfilled](state, action) {
       state.transaction = [...state.transaction, action.payload.data];
+      state.created = true;
       state.isFetchingTransaction = false;
       state.errorTransaction = false;
     },
     [transactionsOperations.createTransactions.rejected](state) {
+      state.created = false;
       state.isFetchingTransaction = false;
       state.errorTransaction = true;
     },
     [transactionsOperations.createTransactions.pending](state) {
+      state.created = false;
       state.isFetchingTransaction = true;
     },
 
@@ -62,7 +66,6 @@ const transactionsSlice = createSlice({
       state.isFetchingStatistic = false;
       state.errorStatistic = false;
     },
-
     [transactionsOperations.getStatistics.rejected](state) {
       state.isFetchingStatistic = false;
       state.errorStatistic = true;
