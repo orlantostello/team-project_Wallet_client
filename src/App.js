@@ -19,25 +19,25 @@ function App() {
     dispatch(transactionsOperations.getAllTransactions());
   }, [dispatch]);
 
-  return (
-    <Router>
-      <Routes>
-        <Route>
-          <Route exact="true" path="/" element={<Navigate to="/current" />} />
-          <Route exact="true" path="/login" redirectTo="/current" element={<Login />} />
-          <Route exact="true" path="/register" redirectTo="/current" element={<Register />} />
-          <Route
-            exact="true"
-            path="current/*"
-            element={
-              <PrivateRoute redirectTo="/login">
-                <Current />
-              </PrivateRoute>
-            }
-          ></Route>
-        </Route>
-      </Routes>
-    </Router>
+  return ( 
+      <Router>
+        <Routes>
+          <Route>
+            <Route exact="true" path="/" element={<Navigate to="/current" />} />
+            <Route exact="true" path="/login" redirectTo="/current" element={<Login />} />
+            <Route exact="true" path="/register" redirectTo="/current" element={<Register />} />
+            <Route
+              exact="true"
+              path="current/*"
+              element={
+                <PrivateRoute redirectTo="/login">
+                  <Current />
+                </PrivateRoute>
+              }
+            ></Route>
+          </Route>
+        </Routes>
+        </Router>
   );
 }
 

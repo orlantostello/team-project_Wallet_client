@@ -4,8 +4,10 @@
   box-sizing: border-box;
 }
 .section {
-  width: 320px;
-  padding: 20px 20px 40px 20px;
+  width: 280px;
+  padding-top: 20px;
+  padding-bottom: 40px;
+  /* padding: 20px 20px 40px 20px; */
   margin: 0 auto;
 }
 
@@ -20,8 +22,8 @@
 }
 
 .statisticContainer {
-  width: 280px;
-  margin: 0 auto;
+  /* width: 280px; */
+  /* margin: 0 auto; */
   font-family: 'Circe', sans-serif;
   font-style: normal;
   font-weight: normal;
@@ -58,8 +60,10 @@ select:first-child {
 
 @media screen and (min-width: 768px) {
   .section {
-    width: 768px;
-    padding: 20px 23px 40px 40px;
+    width: 688px;
+    padding-top: 40px;
+    padding-bottom: 40px;
+    /* padding: 20px 23px 40px 40px; */
   }
   .sectionTitle {
     margin-bottom: 20px;
@@ -98,7 +102,10 @@ select:first-child {
 @media screen and (min-width: 1280px) {
   .section {
     width: 815px;
-    padding: 30px 85px 35px 30px;
+    padding-top: 0px;
+    padding-bottom: 40px;
+    padding-left: 30px;
+    /* padding: 30px 85px 35px 30px; */
   }
 
   .statisticContainer {

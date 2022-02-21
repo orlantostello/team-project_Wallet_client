@@ -1,0 +1,17 @@
+.list {
+  width: 280px;
+}
+@media screen and (min-width: 768px) {
+  .list {
+    width: 688px;
+    padding-top: 40px;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .list {
+    padding-top: 6px;
+    margin-left: 30px;
+    width: 700px;
+  }
+}

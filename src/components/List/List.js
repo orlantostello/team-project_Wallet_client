@@ -7,6 +7,7 @@ import ButtonAddTransactions from '../ButtonAddTransactions';
 import ModalAddTransaction from '../ModalAddTransaction';
 import categoriesSelectors from '../../redux/categories/categories-selectors';
 import transactionsSelectors from '../../redux/transactions/transactions-selectors';
+import s from './List.module.css';
 
 function List() {
   const [showModal, setShowModal] = useState(false);
@@ -23,7 +24,7 @@ function List() {
   };
   return (
     <>
-      <ul>
+      <ul className={s.list}>
         <Header />
         {data && data.map(elem => <Item key={elem._id} elem={elem} categories={categories} />)}
       </ul>

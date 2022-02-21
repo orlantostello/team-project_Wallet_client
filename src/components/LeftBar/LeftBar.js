@@ -36,11 +36,11 @@ function LeftBar(props) {
             </div>
           )}
           {matches.large && (
-            <span>
+            <div className={s.Leftbar}>
               <Navigation />
               <Balance />
               <Rate />
-            </span>
+            </div>
           )}
         </Fragment>
       )}

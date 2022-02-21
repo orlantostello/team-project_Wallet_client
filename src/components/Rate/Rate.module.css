@@ -55,7 +55,7 @@
   .Rate {
     width: 334px;
     height: 188px;
-    margin-top: 20px;
+    margin-left: 20px;
     background-size: 334px;
   }
 
@@ -76,6 +76,7 @@
     width: 350px;
     height: 347px;
     margin-left: 0px;
+    margin-right: 0px;
     background-size: 350px;
   }
 
