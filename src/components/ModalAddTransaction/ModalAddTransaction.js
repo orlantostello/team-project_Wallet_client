@@ -16,6 +16,7 @@ import Modal from '../Modal';
 import Switch from '../Switch';
 import categoriesSelectors from '../../redux/categories/categories-selectors';
 import { transactionsOperations } from '../../redux/transactions';
+import { usersOperations } from '../../redux/users';
 import calendar from './calendar.svg';
 import close from './close.svg';
 import s from './ModalAddTransaction.module.css';
@@ -50,13 +51,14 @@ function ModalAddTransaction({ onCloseModal }) {
     },
 
     validationSchema: validationSchema,
-    onSubmit: values => {
+    onSubmit: async values => {
       const currentValue = {
         ...values,
         isIncome: checked,
         date: date.getTime(),
       };
-      dispatch(transactionsOperations.createTransactions(currentValue));
+      await dispatch(transactionsOperations.createTransactions(currentValue));
+      await dispatch(usersOperations.fetchCurrentUser());
       onCloseModal();
     },
   });

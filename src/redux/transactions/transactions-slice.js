@@ -6,7 +6,23 @@ const initialState = {
   errorTransaction: false,
   isFetchingTransaction: false,
 
-  statistic: {},
+  statistic: {
+    totalExpenditures: '0',
+    totalIncome: '0',
+    categories: {
+      1: '0',
+      2: '0',
+      3: '0',
+      4: '0',
+      5: '0',
+      6: '0',
+      7: '0',
+      8: '0',
+      9: '0',
+      10: '0',
+      11: '0',
+    },
+  },
   errorStatistic: false,
   isFetchingStatistic: false,
 };
@@ -41,17 +57,17 @@ const transactionsSlice = createSlice({
       state.isFetchingTransaction = true;
     },
 
-    [transactionsOperations.getQueryStatistics.fulfilled](state, action) {
-      state.statistic = action.payload.data.statistic;
+    [transactionsOperations.getStatistics.fulfilled](state, action) {
+      state.statistic = action.payload.data;
       state.isFetchingStatistic = false;
       state.errorStatistic = false;
     },
 
-    [transactionsOperations.getQueryStatistics.rejected](state) {
+    [transactionsOperations.getStatistics.rejected](state) {
       state.isFetchingStatistic = false;
       state.errorStatistic = true;
     },
-    [transactionsOperations.getQueryStatistics.pending](state) {
+    [transactionsOperations.getStatistics.pending](state) {
       state.isFetchingStatistic = true;
     },
   },

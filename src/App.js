@@ -15,7 +15,7 @@ function App() {
 
   useEffect(() => {
     dispatch(usersOperations.fetchCurrentUser());
-    dispatch(categoriesOperations.categories());
+    dispatch(categoriesOperations.categories({ searchParams: { lang: 'ru' } }));
     dispatch(transactionsOperations.getAllTransactions());
   }, [dispatch]);
 
