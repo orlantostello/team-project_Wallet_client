@@ -1,12 +1,14 @@
+import React from 'react';
 import Header from './Header/Header';
 import Item from './Item/Item';
+import s from './List.module.css';
 
 const data = [
   {
     _id: '620caa5efdf95292ade34849',
     owner: '620ca806fdf95292ade34836',
     category: '2',
-    comment: 'oil',
+    comment: 'Овощи на неделю',
     amount: 2000,
     currentBalance: 6000,
     isIncome: true,
@@ -29,11 +31,11 @@ const data = [
   {
     _id: '620cbb986ae74c947659ac81',
     owner: '620ca806fdf95292ade34836',
-    category: '5',
+    category: '1',
     comment: 'подарок',
     amount: 2000,
     currentBalance: 4000,
-    isIncome: false,
+    isIncome: true,
     date: 1645007440852,
     month: 'NaN',
     year: 'NaN',
@@ -59,15 +61,21 @@ const categories = {
   },
 };
 
-function List() {
+export default function List() {
   return (
     <ul>
+      <div className={s.MiddleLine}></div>
+
       <Header />
-      {data.map(elem => (
-        <Item key={elem._id} elem={elem} categories={categories} />
-      ))}
+
+      <div>
+        {data.map(elem => (
+          <div className={s.wrapper}>
+            <div className={elem.isIncome ? s.line_income : s.line_expenses}></div>
+            <Item key={elem._id} elem={elem} categories={categories} />
+          </div>
+        ))}
+      </div>
     </ul>
   );
 }
-
-export default List;
