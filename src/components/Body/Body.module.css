@@ -7,11 +7,15 @@
 
 @media screen and (min-width: 768px) {
   .backgroundImageCVR {
+    display: block;
     position: relative;
-    /* padding: 15px; */
+    height: 100vh;
   }
+
   .backgroundImage {
+    display: block;
     position: absolute;
+    display: block;
     left: 0;
     right: 0;
     top: 0;
@@ -21,7 +25,7 @@
     background-position: left bottom, right top;
     background-attachment: fixed;
     z-index: 1;
-    filter: blur(50px);
+    filter: blur(10px);
   }
 
   .container {
@@ -37,5 +41,16 @@
     display: flex;
     justify-content: space-between;
     width: 1110px;
+  }
+
+  .container::after {
+    display: block;
+    position: relative;
+    left: -730px;
+    top: -40px;
+    height: 100vh;
+    content: '';
+    border-right: 1px solid #e7e5f2;
+    box-shadow: -1px 0px 0px rgba(0, 0, 0, 0.05), 1px 0px 0px rgba(255, 255, 255, 0.6);
   }
 }

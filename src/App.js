@@ -24,6 +24,7 @@ function App() {
         <Routes>
           <Route>
             <Route exact="true" path="/" element={<Navigate to="/current" />} />
+            <Route path="*" element={<Navigate to="/current" />} />
             <Route exact="true" path="/login" redirectTo="/current" element={<Login />} />
             <Route exact="true" path="/register" redirectTo="/current" element={<Register />} />
             <Route
