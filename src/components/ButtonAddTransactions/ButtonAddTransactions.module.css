@@ -1,15 +1,35 @@
-.addplusbtn {
-  position: absolute;
-  width: 44px;
-  height: 44px;
-  border-radius: 50%;
-  bottom: 40px;
-  right: 85px;
-  border: none;
+@media screen and (min-width: 280px) and (max-width: 767px) {
+  .addplusbtn {
+    position: absolute;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    bottom: 30px;
+    right: 20px;
+    border: none;
+  }
+
+  .plusbtn {
+    position: absolute;
+    top: -13px;
+    left: -17px;
+  }
 }
 
-.plusbtn {
-  position: absolute;
-  top: -13px;
-  left: -17px;
+@media screen and (min-width: 768px) {
+  .addplusbtn {
+    position: absolute;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    bottom: 40px;
+    right: 85px;
+    border: none;
+  }
+
+  .plusbtn {
+    position: absolute;
+    top: -13px;
+    left: -17px;
+  }
 }
