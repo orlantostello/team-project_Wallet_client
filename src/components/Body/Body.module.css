@@ -9,7 +9,6 @@
   .backgroundImageCVR {
     display: block;
     position: relative;
-    height: 100vh;
   }
 
   .backgroundImage {
@@ -37,20 +36,8 @@
 
 @media screen and (min-width: 1280px) {
   .container {
-    padding-top: 40px;
     display: flex;
     justify-content: space-between;
     width: 1110px;
-  }
-
-  .container::after {
-    display: block;
-    position: relative;
-    left: -730px;
-    top: -40px;
-    height: 100vh;
-    content: '';
-    border-right: 1px solid #e7e5f2;
-    box-shadow: -1px 0px 0px rgba(0, 0, 0, 0.05), 1px 0px 0px rgba(255, 255, 255, 0.6);
   }
 }

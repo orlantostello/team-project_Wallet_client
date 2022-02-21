@@ -13,7 +13,6 @@
   background-color: var(--white-text);
   border-radius: 30px;
   padding: 15px 20px;
-  margin-top: 40px;
   position: sticky;
 }
 .TableRow:not(:last-child) {
@@ -24,19 +23,19 @@
   white-space: pre-line;
 }
 
-@media screen and (min-device-width: 320px) and (max-device-width: 767px) {
+@media screen and (max-device-width: 767px) {
   .HomeTableHead {
     display: none;
   }
 }
-@media screen and (min-device-width: 768px) {
+@media screen and (min-width: 768px) {
   .HomeTableHead {
     box-sizing: border-box;
     width: 100%;
     min-width: 100%;
   }
 }
-@media screen and (min-device-width: 1280px) {
+@media screen and (min-width: 1280px) {
   .HomeTableHead {
     box-sizing: border-box;
     width: 700px;
