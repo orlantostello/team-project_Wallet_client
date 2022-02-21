@@ -5,6 +5,8 @@ import Item from './Item/Item';
 import ButtonAddTransactions from '../ButtonAddTransactions';
 import ModalAddTransaction from '../ModalAddTransaction';
 
+import s from './List.module.css';
+
 const data = [
   {
     _id: '620caa5efdf95292ade34849',
@@ -75,7 +77,7 @@ function List() {
   };
   return (
     <>
-      <ul>
+      <ul className={s.list}>
         <Header />
         {data.map(elem => (
           <Item key={elem._id} elem={elem} categories={categories} />

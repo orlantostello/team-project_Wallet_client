@@ -14,6 +14,7 @@
   .container {
     padding-left: 40px;
     padding-right: 40px;
+    margin: 0 auto;
     width: 688px;
   }
 }
@@ -22,6 +23,7 @@
   .container {
     padding-left: 85px;
     padding-right: 85px;
+    margin: 0 auto;
     width: 1110px;
   }
 }

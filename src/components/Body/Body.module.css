@@ -8,7 +8,7 @@
 @media screen and (min-width: 768px) {
   .backgroundImageCVR {
     position: relative;
-    padding: 15px;
+    /* padding: 15px; */
   }
   .backgroundImage {
     position: absolute;
@@ -33,7 +33,9 @@
 
 @media screen and (min-width: 1280px) {
   .container {
+    padding-top: 40px;
     display: flex;
+    justify-content: space-between;
     width: 1110px;
   }
 }
