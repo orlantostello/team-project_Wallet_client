@@ -7,12 +7,16 @@ import Login from './views/loginView';
 import Register from './views/registerView';
 import Current from './views/currentViews';
 import { usersOperations } from './redux/users';
+import { categoriesOperations } from './redux/categories';
+import { transactionsOperations } from './redux/transactions';
 
 function App() {
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(usersOperations.fetchCurrentUser());
+    dispatch(categoriesOperations.categories({ searchParams: { lang: 'ru' } }));
+    dispatch(transactionsOperations.getAllTransactions());
   }, [dispatch]);
 
   return ( 

@@ -1,62 +1,73 @@
-import { createSlice } from "@reduxjs/toolkit";
-import transactionsOperations from "./transactions-operations";
+import { createSlice } from '@reduxjs/toolkit';
+import transactionsOperations from './transactions-operations';
 
 const initialState = {
   transaction: [],
   errorTransaction: false,
   isFetchingTransaction: false,
 
-  statistic: {},
+  statistic: {
+    totalExpenditures: '0',
+    totalIncome: '0',
+    categories: {
+      1: '0',
+      2: '0',
+      3: '0',
+      4: '0',
+      5: '0',
+      6: '0',
+      7: '0',
+      8: '0',
+      9: '0',
+      10: '0',
+      11: '0',
+    },
+  },
   errorStatistic: false,
   isFetchingStatistic: false,
 };
 
 const transactionsSlice = createSlice({
-  name: "transactions",
+  name: 'transactions',
   initialState,
   extraReducers: {
     [transactionsOperations.getAllTransactions.fulfilled](state, action) {
-      state.transactions = action.payload.data.transaction;
-      state.token = action.payload.data.token;
+      state.transaction = action.payload.data;
       state.isFetchingTransaction = false;
       state.errorTransaction = false;
     },
-
     [transactionsOperations.getAllTransactions.rejected](state) {
       state.isFetchingTransaction = false;
-      state.errorTransaction = false;
+      state.errorTransaction = true;
     },
     [transactionsOperations.getAllTransactions.pending](state) {
       state.isFetchingTransaction = true;
     },
 
     [transactionsOperations.createTransactions.fulfilled](state, action) {
-      state.transactions = action.payload.data.transaction;
-      state.token = action.payload.data.token;
+      state.transaction = [...state.transaction, action.payload.data];
       state.isFetchingTransaction = false;
       state.errorTransaction = false;
     },
-
     [transactionsOperations.createTransactions.rejected](state) {
       state.isFetchingTransaction = false;
-      state.errorTransaction = false;
+      state.errorTransaction = true;
     },
     [transactionsOperations.createTransactions.pending](state) {
       state.isFetchingTransaction = true;
     },
 
-    [transactionsOperations.getQueryStatistics.fulfilled](state, action) {
-      state.transactions = action.payload.data.statistic;
-      state.token = action.payload.data.token;
+    [transactionsOperations.getStatistics.fulfilled](state, action) {
+      state.statistic = action.payload.data;
       state.isFetchingStatistic = false;
       state.errorStatistic = false;
     },
 
-    [transactionsOperations.getQueryStatistics.rejected](state) {
+    [transactionsOperations.getStatistics.rejected](state) {
       state.isFetchingStatistic = false;
-      state.errorStatistic = false;
+      state.errorStatistic = true;
     },
-    [transactionsOperations.getQueryStatistics.pending](state) {
+    [transactionsOperations.getStatistics.pending](state) {
       state.isFetchingStatistic = true;
     },
   },

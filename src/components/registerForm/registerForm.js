@@ -32,12 +32,19 @@ export default function RegisterForm() {
 
   const validationSchema = yup.object().shape({
     email: yup.string().matches(emailRegexp, 'Введите корректный email').required('Введите email'),
-    password: yup.string().min(6).max(12).required('Введите пароль'),
+    password: yup
+      .string()
+      .min(6, 'Пароль должен содержать не менее 6 символов')
+      .max(12, 'Пароль должен содержать не более 12 символов')
+      .required('Введите пароль'),
     confirmPassword: yup
       .string()
       .oneOf([yup.ref('password')], 'Пароли не совпадают')
       .required('Повторно введите пароль'),
-    name: yup.string().min(1).max(12).required('Введите Ваше имя'),
+    name: yup
+      .string()
+      .min(2, 'Имя должно содержать не менее 2 символов')
+      .required('Введите Ваше имя'),
   });
 
   const formik = useFormik({
@@ -56,16 +63,12 @@ export default function RegisterForm() {
     },
   });
 
-  const { values, errors, touched, isValid, dirty, handleSubmit, handleChange, handleBlur } =
-    formik;
+  const { values, errors, touched, isValid, handleSubmit, handleChange, handleBlur } = formik;
 
-  const countPasswordLength = value => value.length.toString();
-  const countConfirmPasswordLength = value => value.length.toString();
+  const countPasswordLength = value => value.length;
+  const countConfirmPasswordLength = value => value.length;
 
   const buttonStatus = !isValid || Object.keys(touched).length === 0;
-  console.log(buttonStatus);
-  // console.log('isValid && !dirty: ', isValid && !dirty);
-  // console.log(!isValid || (Object.keys(touched).length === 0 && touched.constructor === Object));
 
   return (
     <>

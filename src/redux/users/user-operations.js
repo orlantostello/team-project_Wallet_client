@@ -16,27 +16,12 @@ const token = {
 //  body: { name, email, password }
 const register = createAsyncThunk('users/register', async credentials => {
   return await axios.post('/users/register', credentials);
-  //   try {
-  //     // const { data } = await axios.post('/api/users/register', credentials);
-  //     // return data;
-  //   // } catch (error) {
-  //   //   console.warn(error);
-  //   // }
 });
 
 //  POST /users/login
 //  body: { email, password }
 const logIn = createAsyncThunk('users/login', async credentials => {
   return await axios.post('/users/login', credentials);
-
-  // try {
-  //   const { data } = await axios.post('/api/users/login', credentials);
-  //   token.set(data.token);
-  //   return data;
-  // } catch (error) {
-  //   // console.warn(error);
-  //   // return error;
-  // }
 });
 
 //  POST /users/logout
@@ -61,13 +46,6 @@ const fetchCurrentUser = createAsyncThunk('users/refresh', async (_, thunkAPI) =
 
   token.set(persistedToken);
   return await axios.get('/users/current');
-
-  // try {
-  //   const { data } = await axios.get('/users/current');
-  //   return data;
-  // } catch (error) {
-  //   console.warn(error);
-  // }
 });
 
 const operations = {
