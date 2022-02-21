@@ -6,6 +6,7 @@ import { Logo } from '../Svg/Logo';
 import { LogoName } from '../Svg/LogoName';
 import { Exit } from '../Svg/Exit';
 import style from './Header.module.css';
+import { Link } from 'react-router-dom';
 
 const Header = () => {
   const [showModal, setShowModal] = useState(false);
@@ -26,8 +27,10 @@ const Header = () => {
       <div className={style.container}>
         <div className={style.logoBox}>
           <div className={style.logoBox}>
-            <Logo s={style.logo} />
-            <LogoName s={style.logoNameVector} />
+            <Link to="">
+              <Logo s={style.logo} />
+              <LogoName s={style.logoNameVector} />
+            </Link>
           </div>
         </div>
         <div className={style.userInfo}>
