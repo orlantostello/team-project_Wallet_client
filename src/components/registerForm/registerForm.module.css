@@ -20,6 +20,7 @@
   font-size: 18px;
   line-height: 1.47;
   border: none;
+  outline: none;
 }
 
 .progressBar {
@@ -51,12 +52,13 @@
   line-height: 1.5;
   text-transform: uppercase;
 
+  border: solid 1px;
   border-radius: 20px;
 }
 
 .registerBtn {
-  color: #ffffff;
-  background-color: #24cca7;
+  color: var(--white-text);
+  background-color: var(--green-text);
   border: transparent;
 
   transition-property: box-shadow;
@@ -69,9 +71,9 @@
 }
 
 .logInBtn {
-  color: #4a56e2;
-  background-color: #ffffff;
-  border: solid 1px #4a56e2;
+  color: var(--active-blue);
+  background-color: var(--white-text);
+  border: solid 1px var(--active-blue);
 
   transition-property: color, background-color, border, box-shadow;
   transition-duration: 500ms;
@@ -79,9 +81,9 @@
 
 .logInBtn:hover,
 .logInBtn:focus {
-  color: #ffffff;
+  color: var(--white-text);
 
-  background-color: #24cca7;
+  background-color: var(--green-text);
   border: transparent;
   box-shadow: 0px 0px 6px 0px #00000085;
 }
@@ -99,7 +101,7 @@
 
   .progressBar {
     width: 410px;
-    margin-left: 66px;
+    margin-left: 65px;
   }
 
   .btn {

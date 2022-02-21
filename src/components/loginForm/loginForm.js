@@ -50,10 +50,9 @@ export default function LoginForm() {
     },
   });
 
-  const { values, errors, touched, isValid, dirty, handleSubmit, handleChange, handleBlur } =
-    formik;
+  const { values, errors, touched, isValid, handleSubmit, handleChange, handleBlur } = formik;
 
-  // console.log('isValid && !dirty: ', isValid && !dirty);
+  const buttonStatus = !isValid || Object.keys(touched).length === 0;
 
   return (
     <>
@@ -91,9 +90,9 @@ export default function LoginForm() {
         {touched.password && errors.password && <p className={s.notification}>{errors.password}</p>}
 
         <button
-          disable={(isValid && !dirty).toString()}
+          disabled={buttonStatus}
           type={'submit'}
-          className={[s.logInBtn, s.btn].join(' ')}
+          className={buttonStatus ? s.btn : [s.logInBtn, s.btn].join(' ')}
         >
           Вход
         </button>

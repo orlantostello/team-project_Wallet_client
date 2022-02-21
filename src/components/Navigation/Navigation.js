@@ -24,17 +24,17 @@ function Navigation() {
                 <div className={s.container}>
                   <ul className={s.list}>
                     <li className={s.item}>
-                      <NavLink exact to="" className={isLinkActive}>
+                      <NavLink exact="true" to="" className={isLinkActive}>
                         <MdHome className={s.svg} />
                       </NavLink>
                     </li>
                     <li className={s.item}>
-                      <NavLink exact to="diagram" className={isLinkActive}>
+                      <NavLink exact="true" to="diagram" className={isLinkActive}>
                         <MdTimeline className={s.svg} />
                       </NavLink>
                     </li>
                     <li className={s.item}>
-                      <NavLink exact to="rate" className={isLinkActive}>
+                      <NavLink exact="true" to="rate" className={isLinkActive}>
                         <MdAttachMoney className={s.svg} />
                       </NavLink>
                     </li>
@@ -47,13 +47,13 @@ function Navigation() {
                 <div className={s.container}>
                   <ul className={s.list}>
                     <li className={s.item}>
-                      <NavLink exact to="/current" className={isLinkActive}>
+                      <NavLink exact="true" to="/current" className={isLinkActive}>
                         <MdHome className={s.svg} />
                         <div className={s.itemTitle}>Главная</div>
                       </NavLink>
                     </li>
                     <li className={s.item}>
-                      <NavLink exact to="/current/diagram" className={isLinkActive}>
+                      <NavLink exact="true" to="/current/diagram" className={isLinkActive}>
                         <MdTimeline className={s.svg} />
                         <div className={s.itemTitle}>Статистика</div>
                       </NavLink>
@@ -67,13 +67,13 @@ function Navigation() {
                 <div className={s.container}>
                   <ul className={s.list}>
                     <li className={s.item}>
-                      <NavLink exact to="/current" className={isLinkActive}>
+                      <NavLink exact="true" to="/current" className={isLinkActive}>
                         <MdHome className={s.svg} />
                         <div className={s.itemTitle}>Главная</div>
                       </NavLink>
                     </li>
                     <li className={s.item}>
-                      <NavLink exact to="/current/diagram" className={isLinkActive}>
+                      <NavLink exact="true" to="/current/diagram" className={isLinkActive}>
                         <MdTimeline className={s.svg} />
                         <div className={s.itemTitle}>Статистика</div>
                       </NavLink>

@@ -11,7 +11,7 @@
   height: 568px;
   margin: 0 auto;
 
-  background-color: #ffffff;
+  background-color: var(--white-text);
 }
 
 .logo {

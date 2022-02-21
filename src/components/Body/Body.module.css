@@ -1,6 +1,6 @@
 .container {
   margin: 0 auto;
-  width: 303px;
+  width: 280px;
   align-items: flex-start;
   position: relative;
 }
@@ -8,7 +8,7 @@
 @media screen and (min-width: 768px) {
   .backgroundImageCVR {
     position: relative;
-    padding: 15px;
+    /* padding: 15px; */
   }
   .backgroundImage {
     position: absolute;
@@ -27,13 +27,15 @@
   .container {
     position: relative;
     z-index: 2;
-    width: 705px;
+    width: 688px;
   }
 }
 
 @media screen and (min-width: 1280px) {
   .container {
+    padding-top: 40px;
     display: flex;
-    width: 1192px;
+    justify-content: space-between;
+    width: 1110px;
   }
 }
