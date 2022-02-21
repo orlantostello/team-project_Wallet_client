@@ -23,19 +23,25 @@ function List() {
     setShowModal(false);
   };
   return (
-    <ul>
-      <div className={s.MiddleLine}></div>
+    <>
+      <ul>
+        <div className={s.MiddleLine}></div>
 
-      <Header />
+        <Header />
 
-      <div>
-        {data.map(elem => (
-          <div className={s.wrapper}>
-            <div className={elem.isIncome ? s.line_income : s.line_expenses}></div>
-            <Item key={elem._id} elem={elem} categories={categories} />
-          </div>
-        ))}
-      </div>
-    </ul>
+        <div>
+          {data.map(elem => (
+            <div className={s.wrapper}>
+              <div className={elem.isIncome ? s.line_income : s.line_expenses}></div>
+              <Item key={elem._id} elem={elem} categories={categories} />
+            </div>
+          ))}
+        </div>
+      </ul>
+      <ButtonAddTransactions onOpenModal={onOpenModal} />
+      {showModal && <ModalAddTransaction onCloseModal={onCloseModal} />}
+    </>
   );
 }
+
+export default List;
