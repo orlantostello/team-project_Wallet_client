@@ -31,9 +31,9 @@ function List() {
 
         <div>
           {data.map(elem => (
-            <div className={s.wrapper}>
+            <div key={elem._id} className={s.wrapper}>
               <div className={elem.isIncome ? s.line_income : s.line_expenses}></div>
-              <Item key={elem._id} elem={elem} categories={categories} />
+              <Item elem={elem} categories={categories} />
             </div>
           ))}
         </div>
