@@ -36,8 +36,7 @@ export default function DiagramTab() {
   const isFetchingStatistic = useSelector(transactionsSelectors.getIsFetchingStatistic)
   const statisticsError = useSelector(transactionsSelectors.getStatisticsError)
   
-  // const statisticsError = useSelector(categoriesSelectors.getCategoriesError);
-
+ 
    async function createNotification() {
     await toast.error('За данный период транзакций не было', {
       toastId: 'custom-id-yes',
@@ -45,8 +44,7 @@ export default function DiagramTab() {
   }
   useEffect(() => {
     if (statisticsError) {
-      createNotification()
-      alert(statisticsError)
+      createNotification()     
     } return
   },[statisticsError])
   
