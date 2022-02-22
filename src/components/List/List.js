@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import React from 'react';
-// import TablePagination from '@mui/material/TablePagination';
 
 import Header from './Header/Header';
 import Item from './Item/Item';
@@ -34,18 +33,6 @@ function List() {
     setShowModal(false);
   };
 
-  // const [page, setPage] = React.useState(0);
-  // const [rowsPerPage, setRowsPerPage] = React.useState(10);
-
-  // const handleChangePage = (event, newPage) => {
-  //   setPage(newPage);
-  // };
-
-  // const handleChangeRowsPerPage = event => {
-  //   setRowsPerPage(parseInt(event.target.value, 10));
-  //   setPage(0);
-  // };
-
   return (
     <>
       <ul>
@@ -62,15 +49,6 @@ function List() {
           ))}
         </div>
       </ul>
-
-      {/* <TablePagination
-        component="div"
-        count={data.length}
-        page={page}
-        onPageChange={handleChangePage}
-        rowsPerPage={rowsPerPage}
-        onRowsPerPageChange={handleChangeRowsPerPage}
-      /> */}
 
       <ButtonAddTransactions onOpenModal={onOpenModal} />
       {showModal && <ModalAddTransaction onCloseModal={onCloseModal} />}
