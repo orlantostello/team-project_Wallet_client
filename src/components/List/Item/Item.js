@@ -42,13 +42,14 @@ function Item({ elem, categories }) {
           className={`${s.TableRow} ${s.bold}`}
           style={{ color: elem.isIncome ? 'var(--green-text)' : 'var(--pink-text)' }}
         >
-          {elem.amount}
+          {Number(elem.amount).toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, " ")}
         </span>
       </div>
 
       <div className={`${s.box} ${s.center}`}>
         <span className={s.test}>{capitalizeFirsLetter(HEADER_NAME.BALANCE)}</span>
-        <span className={s.TableRow}>{elem.currentBalance}</span>
+        <span className={s.TableRow}>{Number((elem.currentBalance)).toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, " ")}
+        </span>
       </div>
     </li>
   );
