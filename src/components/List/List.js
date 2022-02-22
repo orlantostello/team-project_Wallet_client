@@ -1,6 +1,5 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { useSelector } from 'react-redux';
-// import React from 'react';
 
 import Header from './Header/Header';
 import Item from './Item/Item';
@@ -15,16 +14,6 @@ function List() {
 
   const categories = useSelector(categoriesSelectors.getAllCategories);
   const data = useSelector(transactionsSelectors.getAllTransactions);
-  
-  const [listData, setlistData] = useState(data);
-
-  useEffect(() => {
-    if (listData !== null) {
-      const sortedRows = [...listData].sort((a, b) => b.date - a.date);
-      setlistData(sortedRows);
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
 
   const onOpenModal = () => {
     setShowModal(true);
@@ -42,12 +31,14 @@ function List() {
         <Header />
 
         <div>
-          {listData.map(elem => (
-            <div key={elem._id} className={s.wrapper}>
-              <div className={elem.isIncome ? s.line_income : s.line_expenses}></div>
-              <Item elem={elem} categories={categories} />
-            </div>
-          ))}
+          {[...data]
+            .sort((a, b) => b.date - a.date)
+            .map(elem => (
+              <div key={elem._id} className={s.wrapper}>
+                <div className={elem.isIncome ? s.line_income : s.line_expenses}></div>
+                <Item elem={elem} categories={categories} />
+              </div>
+            ))}
         </div>
       </ul>
 

@@ -21,9 +21,8 @@ const getStatistics = createAsyncThunk('transactions/diagram', async (credential
     return el.join('=');
   });
   const stringParams = arrayKeyAndValue.join('&');
-  const result = await axios.get(`/transactions/period?${stringParams}`);
-  console.log(result);
-  return result;
+
+  return await axios.get(`/transactions/period?${stringParams}`);
 });
 
 const operations = {
