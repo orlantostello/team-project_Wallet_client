@@ -15,13 +15,17 @@ const token = {
 //  POST /users/signup
 //  body: { name, email, password }
 const register = createAsyncThunk('users/register', async credentials => {
-  return await axios.post('/users/register', credentials);
+  const result = await axios.post('/users/register', credentials);
+  token.set(result.data.token);
+  return result;
 });
 
 //  POST /users/login
 //  body: { email, password }
 const logIn = createAsyncThunk('users/login', async credentials => {
-  return await axios.post('/users/login', credentials);
+  const result = await axios.post('/users/login', credentials);
+  token.set(result.data.token);
+  return result;
 });
 
 //  POST /users/logout

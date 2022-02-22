@@ -1,13 +1,16 @@
-import { configureStore, getDefaultMiddleware } from '@reduxjs/toolkit';
+import {
+  configureStore,
+  // getDefaultMiddleware
+} from '@reduxjs/toolkit';
 import {
   persistStore,
   persistReducer,
-  FLUSH,
-  REHYDRATE,
-  PAUSE,
-  PERSIST,
-  PURGE,
-  REGISTER,
+  // FLUSH,
+  // REHYDRATE,
+  // PAUSE,
+  // PERSIST,
+  // PURGE,
+  // REGISTER,
 } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
 
@@ -15,13 +18,13 @@ import { usersReducer } from './users';
 import { categoriesReducer } from './categories';
 import { transactionsReducer } from './transactions';
 
-const middleware = [
-  ...getDefaultMiddleware({
-    serializableCheck: {
-      ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
-    },
-  }),
-];
+// const middleware = [
+//   ...getDefaultMiddleware({
+//     serializableCheck: {
+//       ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
+//     },
+//   }),
+// ];
 
 const usersPersistConfig = {
   key: 'users',
@@ -29,11 +32,11 @@ const usersPersistConfig = {
   whitelist: ['token'],
 };
 
-const categoriesPersistConfig = {
-  key: 'categories',
-  storage,
-  whitelist: ['token'],
-};
+// const categoriesPersistConfig = {
+//   key: 'categories',
+//   storage,
+//   whitelist: ['token'],
+// };
 
 // const transactionsPersistConfig = {
 //   key: 'transactions',
@@ -47,7 +50,10 @@ export const store = configureStore({
     categories: categoriesReducer,
     transactions: transactionsReducer,
   },
-  middleware,
+  middleware: getDefaultMiddleware =>
+    getDefaultMiddleware({
+      serializableCheck: false,
+    }),
   devTools: process.env.NODE_ENV === 'development',
 });
 

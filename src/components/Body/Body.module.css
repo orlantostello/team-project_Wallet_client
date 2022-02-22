@@ -7,11 +7,14 @@
 
 @media screen and (min-width: 768px) {
   .backgroundImageCVR {
+    display: block;
     position: relative;
-    /* padding: 15px; */
   }
+
   .backgroundImage {
+    display: block;
     position: absolute;
+    display: block;
     left: 0;
     right: 0;
     top: 0;
@@ -21,7 +24,7 @@
     background-position: left bottom, right top;
     background-attachment: fixed;
     z-index: 1;
-    filter: blur(50px);
+    filter: blur(10px);
   }
 
   .container {
@@ -33,7 +36,6 @@
 
 @media screen and (min-width: 1280px) {
   .container {
-    padding-top: 40px;
     display: flex;
     justify-content: space-between;
     width: 1110px;

@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-
 import Container from '../Container/Container';
 import ChartStatistic from '../Chart/ChartStatistic';
 import TableStatistic from '../Table/TableStatistic';
@@ -9,16 +8,19 @@ import categoriesSelectors from '../../../redux/categories/categories-selectors'
 import transactionsSelectors from '../../../redux/transactions/transactions-selectors';
 import { transactionsOperations } from '../../../redux/transactions';
 import s from './DiagramTab.module.css';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+ import Loader from '../../Loader/Loader';
 
-export default function DiagraTab() {
-  let today = new Date();
 
+export default function DiagramTab() {
+  
   const [month, setMonth] = useState(() => {
-    const initialState = today.toLocaleString('ru', { month: 'long' });
+    const initialState = new Date().toLocaleString('ru', { month: 'long' });
     return initialState;
   });
   const [year, setYear] = useState(() => {
-    const initialState = String(today.getFullYear());
+    const initialState = String(new Date().getFullYear());
     return initialState;
   });
 
@@ -30,6 +32,24 @@ export default function DiagraTab() {
 
   const categories = useSelector(categoriesSelectors.getAllCategories);
   const userDataInfo = useSelector(transactionsSelectors.getStatistics);
+
+  const isFetchingStatistic = useSelector(transactionsSelectors.getIsFetchingStatistic)
+  const statisticsError = useSelector(transactionsSelectors.getStatisticsError)
+  
+  // const statisticsError = useSelector(categoriesSelectors.getCategoriesError);
+
+   async function createNotification() {
+    await toast.error('За данный период транзакций не было', {
+      toastId: 'custom-id-yes',
+    });
+  }
+  useEffect(() => {
+    if (statisticsError) {
+      createNotification()
+      alert(statisticsError)
+    } return
+  },[statisticsError])
+  
 
   const months = [
     'январь',
@@ -45,6 +65,13 @@ export default function DiagraTab() {
     'ноябрь',
     'декабрь',
   ];
+
+  const currentMonth = new Date().getMonth() + 1;
+    
+    const monthsSelect = (year === String(new Date().getFullYear()))
+    ?months.slice(0, currentMonth)
+    : months  
+  
   const years = ['2022', '2021', '2020'];
 
   function changeSelect(e) {
@@ -64,19 +91,23 @@ export default function DiagraTab() {
     }
   }
 
-  const arrCategories = Object.values(categories.costs); //categories name
-  const arrCategoriesCosts = Object.values(userDataInfo.categories); // categories costs
+  const arrCategories = Object.values(categories.costs); 
+  const arrCategoriesCosts = Object.values(userDataInfo.categories); 
 
   const arrCategoriesCostsForRender = arrCategoriesCosts.map(
-    item => parseFloat(Number((item * 100) / 100)).toFixed(2), //'100.76', '200.12', '30.90', '400.02', '50.00',
-  );
+    item => parseFloat(Number((item * 100) / 100)).toFixed(2), );
 
-  const categoriesTable = arrCategories.map(function (item, index) {
-    //make obj for render to table
+  function generateRandomColor() {
+    let color =
+      "#" +
+      (Math.random().toString(16) + "000000").substring(2, 8).toUpperCase();
+    return color;
+  }
+  const categoriesTable = arrCategories.map(function (item, index) {    
     return {
       name: item,
       cost: arrCategoriesCostsForRender[index] || '0',
-      color: colorsDiagram[index],
+      color: colorsDiagram[index] || generateRandomColor(),
     };
   });
 
@@ -88,9 +119,10 @@ export default function DiagraTab() {
 
   const costsSumStatistic = costsSum.toFixed(2);
 
-  const costsCategoryChart = arrCategoriesCosts.map(item =>
-    Math.round((360 / costsSum) * Number(item)),
-  );
+   const costsCategoryChart = (costsSum)
+    ? arrCategoriesCosts.map(item => Math.round((360 / costsSum) * Number(item)))
+      :[360]
+  
 
   const totalIncome = Number(userDataInfo.totalIncome).toFixed(2);
 
@@ -101,39 +133,41 @@ export default function DiagraTab() {
       styleContainer={s.section}
       styleTitle={s.sectionTitle}
     >
-      <Container styleContainer={s.statisticContainer}>
-        <ChartStatistic
-          costsSumStatistic={costsSumStatistic}
-          costsCategoryChart={costsCategoryChart}
-          colorsDiagram={colorsDiagram}
-        />
-
-        <div>
-          <div className={s.select}>
-            <select name="month" value={month} onChange={changeSelect}>
-              {months.map((item, ind) => (
-                <option key={ind} className={s.itemSelect}>
-                  {item}{' '}
-                </option>
-              ))}
-            </select>
-
-            <select name="year" value={year} onChange={changeSelect}>
-              {years.map((item, ind) => (
-                <option key={ind} className={s.itemSelect}>
-                  {item}{' '}
-                </option>
-              ))}
-            </select>
-          </div>
-
-          <TableStatistic
-            categoriesTable={categoriesTable}
+      {isFetchingStatistic ? <Loader /> :
+        <Container styleContainer={s.statisticContainer}>
+        
+          <ChartStatistic
             costsSumStatistic={costsSumStatistic}
-            income={totalIncome}
-          />
-        </div>
-      </Container>
+            costsCategoryChart={costsCategoryChart}
+            colorsDiagram={colorsDiagram} />
+
+          <div>
+            <div className={s.select}>
+              <select name="month" value={month} onChange={changeSelect}>
+                {monthsSelect.map((item, ind) => (
+                  <option key={ind} className={s.itemSelect}>
+                    {item}
+                  </option>
+                ))}
+              </select>
+
+              <select name="year" value={year} onChange={changeSelect}>
+                {years.map((item, ind) => (
+                  <option key={ind} className={s.itemSelect}>
+                    {item}
+                  </option>
+                ))}
+              </select>
+            </div>
+
+            <TableStatistic
+              categoriesTable={categoriesTable}
+              costsSumStatistic={costsSumStatistic}
+              income={totalIncome} />
+          </div>
+        </Container>
+      }
+       {statisticsError && <ToastContainer autoClose={3000} position="top-center" theme="colored" />}  
     </Container>
   );
 }

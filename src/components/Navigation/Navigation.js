@@ -1,91 +1,56 @@
 import React, { Fragment } from 'react';
 import { NavLink } from 'react-router-dom';
 import Media from 'react-media';
+import useMediaQuery from '../../hooks/useMediaQuery';
 import { MdHome, MdTimeline, MdAttachMoney } from 'react-icons/md';
 
 import s from './Navigation.module.css';
 
 function Navigation() {
   let isLinkActive = ({ isActive }) => (isActive ? s.activeLink : s.link);
+  const isMobile = useMediaQuery('(max-width: 767px)');
 
-  return (
-    <div>
-      <Media
-        queries={{
-          small: '(max-width: 767px)',
-          medium: '(min-width: 768px) and (max-width: 1279px)',
-          large: '(min-width: 1280px)',
-        }}
-      >
-        {matches => (
-          <Fragment>
-            {matches.small && (
-              <>
-                <div className={s.container}>
-                  <ul className={s.list}>
-                    <li className={s.item}>
-                      <NavLink exact="true" to="" className={isLinkActive}>
-                        <MdHome className={s.svg} />
-                      </NavLink>
-                    </li>
-                    <li className={s.item}>
-                      <NavLink exact="true" to="diagram" className={isLinkActive}>
-                        <MdTimeline className={s.svg} />
-                      </NavLink>
-                    </li>
-                    <li className={s.item}>
-                      <NavLink exact="true" to="rate" className={isLinkActive}>
-                        <MdAttachMoney className={s.svg} />
-                      </NavLink>
-                    </li>
-                  </ul>
-                </div>
-              </>
-            )}
-            {matches.medium && (
-              <>
-                <div className={s.container}>
-                  <ul className={s.list}>
-                    <li className={s.item}>
-                      <NavLink exact="true" to="/current" className={isLinkActive}>
-                        <MdHome className={s.svg} />
-                        <div className={s.itemTitle}>Главная</div>
-                      </NavLink>
-                    </li>
-                    <li className={s.item}>
-                      <NavLink exact="true" to="/current/diagram" className={isLinkActive}>
-                        <MdTimeline className={s.svg} />
-                        <div className={s.itemTitle}>Статистика</div>
-                      </NavLink>
-                    </li>
-                  </ul>
-                </div>
-              </>
-            )}
-            {matches.large && (
-              <>
-                <div className={s.container}>
-                  <ul className={s.list}>
-                    <li className={s.item}>
-                      <NavLink exact="true" to="/current" className={isLinkActive}>
-                        <MdHome className={s.svg} />
-                        <div className={s.itemTitle}>Главная</div>
-                      </NavLink>
-                    </li>
-                    <li className={s.item}>
-                      <NavLink exact="true" to="/current/diagram" className={isLinkActive}>
-                        <MdTimeline className={s.svg} />
-                        <div className={s.itemTitle}>Статистика</div>
-                      </NavLink>
-                    </li>
-                  </ul>
-                </div>
-              </>
-            )}
-          </Fragment>
-        )}
-      </Media>
-    </div>
+  return isMobile ? (
+    <>
+      <div className={s.container}>
+        <ul className={s.list}>
+          <li className={s.item}>
+            <NavLink end to="/current" className={isLinkActive}>
+              <MdHome className={s.svg} />
+            </NavLink>
+          </li>
+          <li className={s.item}>
+            <NavLink end to="/current/diagram" className={isLinkActive}>
+              <MdTimeline className={s.svg} />
+            </NavLink>
+          </li>
+          <li className={s.item}>
+            <NavLink end to="/current/rate" className={isLinkActive}>
+              <MdAttachMoney className={s.svg} />
+            </NavLink>
+          </li>
+        </ul>
+      </div>
+    </>
+  ) : (
+    <>
+      <div className={s.container}>
+        <ul className={s.list}>
+          <li className={s.item}>
+            <NavLink end to="/current" className={isLinkActive}>
+              <MdHome className={s.svg} />
+              <div className={s.itemTitle}>Главная</div>
+            </NavLink>
+          </li>
+          <li className={s.item}>
+            <NavLink end to="/current/diagram" className={isLinkActive}>
+              <MdTimeline className={s.svg} />
+              <div className={s.itemTitle}>Статистика</div>
+            </NavLink>
+          </li>
+        </ul>
+      </div>
+    </>
   );
 }
 

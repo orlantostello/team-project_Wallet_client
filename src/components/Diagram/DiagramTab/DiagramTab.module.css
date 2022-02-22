@@ -1,8 +1,3 @@
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
 .section {
   width: 280px;
   padding-top: 20px;
@@ -32,6 +27,18 @@
 
 .select {
   margin-bottom: 20px;
+  /* color: -internal-light-dark(black, white); */
+}
+
+select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  -ms-appearance: none;
+  appearance: none;
+}
+
+select:focus {
+  outline: none;
 }
 
 .select select {
@@ -46,15 +53,17 @@
   font-weight: 400;
   font-style: normal;
   text-transform: capitalize;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
   overflow: hidden;
   background: url('./selector.svg') no-repeat center right;
   background-position-x: 92%;
 }
 
 select:first-child {
+  margin-bottom: 20px;
+}
+
+select .itemSelect {
+  color: rgb(117, 112, 112);
   margin-bottom: 20px;
 }
 
@@ -84,7 +93,7 @@ select:first-child {
     align-items: center;
   }
 
-  .select select {
+  select .select {
     width: 166px;
     background-position-x: 85%;
     font-family: 'Circe', sans-serif;
@@ -102,10 +111,11 @@ select:first-child {
 @media screen and (min-width: 1280px) {
   .section {
     width: 815px;
-    padding-top: 0px;
+    padding-top: 30px;
     padding-bottom: 40px;
     padding-left: 30px;
-    /* padding: 30px 85px 35px 30px; */
+    border-left: 1px solid #e7e5f2;
+    box-shadow: -1px 0px 0px rgba(0, 0, 0, 0.05);
   }
 
   .statisticContainer {

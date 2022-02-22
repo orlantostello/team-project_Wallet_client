@@ -2,11 +2,13 @@
   padding-left: 20px;
   padding-right: 20px;
   margin: 0 auto;
+  max-width: 280px;
 }
 
 @media screen and (min-width: 320px) {
   .container {
-    max-width: 280px;
+    width: 280px;
+    margin: 0 auto;
   }
 }
 

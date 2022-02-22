@@ -1,13 +1,13 @@
 @media screen and (min-width: 768px) {
   .Leftbar {
     display: flex;
-    margin-top: 20px;
+    padding-top: 20px;
   }
 }
 @media screen and (min-width: 1280px) {
   .Leftbar {
     display: block;
-    margin-right: 30px;
+    padding-right: 30px;
     margin-top: 0px;
   }
 }
