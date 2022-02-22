@@ -1,43 +1,43 @@
-import { useEffect } from 'react';
+import { useEffect, Suspense, lazy } from 'react';
 import { useDispatch } from 'react-redux';
 import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom';
 
 import PrivateRoute from './components/PrivateRoute';
-import Login from './views/loginView';
-import Register from './views/registerView';
-import Current from './views/currentViews/currentViews';
+import Loader from './components/Loader/Loader';
 import { usersOperations } from './redux/users';
-// import { categoriesOperations } from './redux/categories';
-// import { transactionsOperations } from './redux/transactions';
+
+const Login = lazy(() => import('./views/loginView' /* webpackChunkName: "login-page" */));
+const Register = lazy(() => import('./views/registerView' /* webpackChunkName: "register-page" */));
+const Current = lazy(() => import('./views/currentViews' /* webpackChunkName: "home-page" */));
 
 function App() {
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(usersOperations.fetchCurrentUser());
-    // dispatch(categoriesOperations.categories({ searchParams: { lang: 'ru' } }));
-    // dispatch(transactionsOperations.getAllTransactions());
   }, [dispatch]);
 
   return (
     <Router>
-      <Routes>
-        <Route>
-          <Route exact="true" path="/" element={<Navigate to="/current" />} />
-          <Route path="*" element={<Navigate to="/current" />} />
-          <Route exact="true" path="/login" redirectTo="/current" element={<Login />} />
-          <Route exact="true" path="/register" redirectTo="/current" element={<Register />} />
-          <Route
-            exact="true"
-            path="current/*"
-            element={
-              <PrivateRoute redirectTo="/login">
-                <Current />
-              </PrivateRoute>
-            }
-          ></Route>
-        </Route>
-      </Routes>
+      <Suspense fallback={<Loader />}>
+        <Routes>
+          <Route>
+            <Route exact="true" path="/" element={<Navigate to="/current" />} />
+            <Route path="*" element={<Navigate to="/current" />} />
+            <Route exact="true" path="/login" redirectTo="/current" element={<Login />} />
+            <Route exact="true" path="/register" redirectTo="/current" element={<Register />} />
+            <Route
+              exact="true"
+              path="current/*"
+              element={
+                <PrivateRoute redirectTo="/login">
+                  <Current />
+                </PrivateRoute>
+              }
+            ></Route>
+          </Route>
+        </Routes>
+      </Suspense>
     </Router>
   );
 }

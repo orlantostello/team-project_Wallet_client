@@ -1,5 +1,6 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
+import { ToastContainer, toast } from 'react-toastify';
 
 import Header from './Header/Header';
 import Item from './Item/Item';
@@ -7,6 +8,7 @@ import ButtonAddTransactions from '../ButtonAddTransactions';
 import ModalAddTransaction from '../ModalAddTransaction';
 import categoriesSelectors from '../../redux/categories/categories-selectors';
 import transactionsSelectors from '../../redux/transactions/transactions-selectors';
+import Loader from '../Loader/Loader';
 import s from './List.module.css';
 
 function List() {
@@ -14,6 +16,34 @@ function List() {
 
   const categories = useSelector(categoriesSelectors.getAllCategories);
   const data = useSelector(transactionsSelectors.getAllTransactions);
+  const isLoading = useSelector(transactionsSelectors.getAllisFetchingTransaction);
+  const dataError = useSelector(transactionsSelectors.getAllTransactionsError);
+  const addTransaction = useSelector(transactionsSelectors.createTransaction);
+  const addTransactionError = useSelector(transactionsSelectors.createTransactionError);
+
+  useEffect(() => {
+    if (dataError) {
+      toast.error('Произошла ошибка загрузки транзакций.', {
+        toastId: 'custom-id-yes',
+      });
+    }
+  }, [dataError]);
+
+  useEffect(() => {
+    if (addTransaction) {
+      toast.success('Транзакция была успешно добавлена.', {
+        toastId: 'custom-id-yes',
+      });
+    }
+  }, [addTransaction]);
+
+  useEffect(() => {
+    if (addTransactionError) {
+      toast.error('Произошла ошибка добавления транзакции.', {
+        toastId: 'custom-id-yes',
+      });
+    }
+  }, [addTransactionError]);
 
   const onOpenModal = () => {
     setShowModal(true);
@@ -25,25 +55,39 @@ function List() {
 
   return (
     <>
-      <ul className={s.List}>
-        <div className={s.MiddleLine}></div>
+      {isLoading ? (
+        <Loader />
+      ) : (
+        <>
+          {dataError && <ToastContainer autoClose={3000} position="top-center" theme="colored" />}
+          {addTransaction && (
+            <ToastContainer autoClose={3000} position="top-center" theme="colored" />
+          )}
+          {addTransactionError && (
+            <ToastContainer autoClose={3000} position="top-center" theme="colored" />
+          )}
 
-        <Header />
+          <ul className={s.List}>
+            <div className={s.MiddleLine}></div>
 
-        <div>
-          {[...data]
-            .sort((a, b) => b.date - a.date)
-            .map(elem => (
-              <div key={elem._id} className={s.wrapper}>
-                <div className={elem.isIncome ? s.line_income : s.line_expenses}></div>
-                <Item elem={elem} categories={categories} />
-              </div>
-            ))}
-        </div>
-      </ul>
+            <Header />
 
-      <ButtonAddTransactions onOpenModal={onOpenModal} />
-      {showModal && <ModalAddTransaction onCloseModal={onCloseModal} />}
+            <div>
+              {[...data]
+                .sort((a, b) => b.date - a.date)
+                .map(elem => (
+                  <div key={elem._id} className={s.wrapper}>
+                    <div className={elem.isIncome ? s.line_income : s.line_expenses}></div>
+                    <Item elem={elem} categories={categories} />
+                  </div>
+                ))}
+            </div>
+          </ul>
+
+          <ButtonAddTransactions onOpenModal={onOpenModal} />
+          {showModal && <ModalAddTransaction onCloseModal={onCloseModal} />}
+        </>
+      )}
     </>
   );
 }

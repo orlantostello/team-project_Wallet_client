@@ -10,12 +10,11 @@ import Box from '@material-ui/core/Box';
 import { useFormik } from 'formik';
 import * as yup from 'yup';
 import { useSelector, useDispatch } from 'react-redux';
-import { ToastContainer, toast } from 'react-toastify';
 
 import Modal from '../Modal';
 import Switch from '../Switch';
 import categoriesSelectors from '../../redux/categories/categories-selectors';
-import { transactionsOperations, transactionsSelectors } from '../../redux/transactions';
+import { transactionsOperations } from '../../redux/transactions';
 import { usersOperations } from '../../redux/users';
 import calendar from './calendar.svg';
 import close from './close.svg';
@@ -29,15 +28,6 @@ function ModalAddTransaction({ onCloseModal }) {
 
   const categories = useSelector(categoriesSelectors.getAllCategories);
   const arrayKeys = Object.keys(categories.costs);
-
-  const isError = useSelector(transactionsSelectors.createTransactionError);
-  console.log(isError);
-
-  async function createNotification() {
-    await toast.error('Что-то пошло не так!', {
-      toastId: 'custom-id-yes',
-    });
-  }
 
   const handleChangeChecked = event => {
     setChecked(event.target.checked);
@@ -70,8 +60,6 @@ function ModalAddTransaction({ onCloseModal }) {
       };
       await dispatch(transactionsOperations.createTransactions(currentValue));
       await dispatch(usersOperations.fetchCurrentUser());
-      await createNotification();
-
       onCloseModal();
     },
   });
@@ -253,7 +241,6 @@ function ModalAddTransaction({ onCloseModal }) {
           </button>
         </div>
       </Modal>
-      {isError && <ToastContainer autoClose={3000} position="top-center" theme="colored" />}
     </>
   );
 }
