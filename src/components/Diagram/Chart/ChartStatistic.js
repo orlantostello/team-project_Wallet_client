@@ -9,7 +9,7 @@ ChartJS.register(ArcElement, Tooltip, Legend);
 export default function ChartStatistic({ costsSumStatistic, costsCategoryChart, colorsDiagram }) { 
         const data = {   
         datasets: [{           
-            data: costsCategoryChart,
+            data: costsCategoryChart||[360],
             backgroundColor:colorsDiagram,            
             borderColor:colorsDiagram,         
             borderWidth: 1,
