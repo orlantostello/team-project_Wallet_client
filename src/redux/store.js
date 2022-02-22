@@ -29,11 +29,11 @@ const usersPersistConfig = {
   whitelist: ['token'],
 };
 
-const categoriesPersistConfig = {
-  key: 'categories',
-  storage,
-  whitelist: ['token'],
-};
+// const categoriesPersistConfig = {
+//   key: 'categories',
+//   storage,
+//   whitelist: ['token'],
+// };
 
 // const transactionsPersistConfig = {
 //   key: 'transactions',
