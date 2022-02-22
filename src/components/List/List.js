@@ -1,5 +1,7 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
+import React from 'react';
+// import TablePagination from '@mui/material/TablePagination';
 
 import Header from './Header/Header';
 import Item from './Item/Item';
@@ -15,6 +17,15 @@ function List() {
   const categories = useSelector(categoriesSelectors.getAllCategories);
   const data = useSelector(transactionsSelectors.getAllTransactions);
 
+  const [listData, setlistData] = useState(data);
+
+  useEffect(() => {
+    if (listData !== null) {
+      const sortedRows = [...listData].sort((a, b) => b.date - a.date);
+      setlistData(sortedRows);
+    }
+  }, []);
+
   const onOpenModal = () => {
     setShowModal(true);
   };
@@ -22,6 +33,19 @@ function List() {
   const onCloseModal = () => {
     setShowModal(false);
   };
+
+  // const [page, setPage] = React.useState(0);
+  // const [rowsPerPage, setRowsPerPage] = React.useState(10);
+
+  // const handleChangePage = (event, newPage) => {
+  //   setPage(newPage);
+  // };
+
+  // const handleChangeRowsPerPage = event => {
+  //   setRowsPerPage(parseInt(event.target.value, 10));
+  //   setPage(0);
+  // };
+
   return (
     <>
       <ul>
@@ -30,7 +54,7 @@ function List() {
         <Header />
 
         <div>
-          {data.map(elem => (
+          {listData.map(elem => (
             <div className={s.wrapper}>
               <div className={elem.isIncome ? s.line_income : s.line_expenses}></div>
               <Item key={elem._id} elem={elem} categories={categories} />
@@ -38,6 +62,16 @@ function List() {
           ))}
         </div>
       </ul>
+
+      {/* <TablePagination
+        component="div"
+        count={data.length}
+        page={page}
+        onPageChange={handleChangePage}
+        rowsPerPage={rowsPerPage}
+        onRowsPerPageChange={handleChangeRowsPerPage}
+      /> */}
+
       <ButtonAddTransactions onOpenModal={onOpenModal} />
       {showModal && <ModalAddTransaction onCloseModal={onCloseModal} />}
     </>
