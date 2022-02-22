@@ -8,6 +8,9 @@ import categoriesSelectors from '../../../redux/categories/categories-selectors'
 import transactionsSelectors from '../../../redux/transactions/transactions-selectors';
 import { transactionsOperations } from '../../../redux/transactions';
 import s from './DiagramTab.module.css';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+ import Loader from '../../Loader/Loader';
 
 
 export default function DiagramTab() {
@@ -29,6 +32,24 @@ export default function DiagramTab() {
 
   const categories = useSelector(categoriesSelectors.getAllCategories);
   const userDataInfo = useSelector(transactionsSelectors.getStatistics);
+
+  const isFetchingStatistic = useSelector(transactionsSelectors.getIsFetchingStatistic)
+  const statisticsError = useSelector(transactionsSelectors.getStatisticsError)
+  
+  // const statisticsError = useSelector(categoriesSelectors.getCategoriesError);
+
+   async function createNotification() {
+    await toast.error('За данный период транзакций не было', {
+      toastId: 'custom-id-yes',
+    });
+  }
+  useEffect(() => {
+    if (statisticsError) {
+      createNotification()
+      alert(statisticsError)
+    } return
+  },[statisticsError])
+  
 
   const months = [
     'январь',
@@ -112,37 +133,41 @@ export default function DiagramTab() {
       styleContainer={s.section}
       styleTitle={s.sectionTitle}
     >
-      <Container styleContainer={s.statisticContainer}>
-        <ChartStatistic
-          costsSumStatistic={costsSumStatistic}
-          costsCategoryChart={costsCategoryChart}
-          colorsDiagram={colorsDiagram} />
-
-        <div>
-          <div className={s.select}>
-            <select name="month" value={month} onChange={changeSelect}>
-              {monthsSelect.map((item, ind) => (
-                <option key={ind} className={s.itemSelect}>
-                  {item}{' '}
-                </option>
-              ))}
-            </select>
-
-            <select name="year" value={year} onChange={changeSelect}>
-              {years.map((item, ind) => (
-                <option key={ind} className={s.itemSelect}>
-                  {item}{' '}
-                </option>
-              ))}
-            </select>
-          </div>
-
-          <TableStatistic
-            categoriesTable={categoriesTable}
+      {isFetchingStatistic ? <Loader /> :
+        <Container styleContainer={s.statisticContainer}>
+        
+          <ChartStatistic
             costsSumStatistic={costsSumStatistic}
-            income={totalIncome} />
-        </div>
-      </Container>
+            costsCategoryChart={costsCategoryChart}
+            colorsDiagram={colorsDiagram} />
+
+          <div>
+            <div className={s.select}>
+              <select name="month" value={month} onChange={changeSelect}>
+                {monthsSelect.map((item, ind) => (
+                  <option key={ind} className={s.itemSelect}>
+                    {item}
+                  </option>
+                ))}
+              </select>
+
+              <select name="year" value={year} onChange={changeSelect}>
+                {years.map((item, ind) => (
+                  <option key={ind} className={s.itemSelect}>
+                    {item}
+                  </option>
+                ))}
+              </select>
+            </div>
+
+            <TableStatistic
+              categoriesTable={categoriesTable}
+              costsSumStatistic={costsSumStatistic}
+              income={totalIncome} />
+          </div>
+        </Container>
+      }
+       {statisticsError && <ToastContainer autoClose={3000} position="top-center" theme="colored" />}  
     </Container>
   );
 }
