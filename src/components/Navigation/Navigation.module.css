@@ -34,6 +34,7 @@
   display: block;
   width: 38px;
   height: 38px;
+  box-shadow: 0 0 8px 1px #4a56e280;
 }
 
 .svg {
@@ -91,9 +92,21 @@
     height: 14px;
   }
 
+  .link > .svg:hover,
+  .link > .svg:focus {
+    box-shadow: 0 0 8px 1px #4a56e280;
+  }
+
   .itemTitle {
     color: black;
     padding-left: 44px;
+    transition-property: color;
+    transition-duration: 200ms;
+  }
+
+  .link > .itemTitle:hover,
+  .link > .itemTitle:focus {
+    color: var(--active-blue);
   }
 
   .icon {
