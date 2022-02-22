@@ -1,6 +1,4 @@
-import React, { Fragment } from 'react';
 import { NavLink } from 'react-router-dom';
-import Media from 'react-media';
 import useMediaQuery from '../../hooks/useMediaQuery';
 import { MdHome, MdTimeline, MdAttachMoney } from 'react-icons/md';
 
