@@ -115,14 +115,15 @@ export default function DiagramTab() {
       return sum + elem;
     }, 0);
 
-  const costsSumStatistic = costsSum.toFixed(2);
+  const costsSumStatistic = costsSum.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, " ");
 
    const costsCategoryChart = (costsSum)
     ? arrCategoriesCosts.map(item => Math.round((360 / costsSum) * Number(item)))
       :[360]
   
 
-  const totalIncome = Number(userDataInfo.totalIncome).toFixed(2);
+  const totalIncome = Number(userDataInfo.totalIncome).toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, " ");
+  
 
   return (
     <Container
