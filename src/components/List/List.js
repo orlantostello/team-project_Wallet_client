@@ -23,6 +23,7 @@ function List() {
       const sortedRows = [...listData].sort((a, b) => b.date - a.date);
       setlistData(sortedRows);
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const onOpenModal = () => {
