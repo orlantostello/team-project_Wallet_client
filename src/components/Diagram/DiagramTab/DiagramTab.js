@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-
 import Container from '../Container/Container';
 import ChartStatistic from '../Chart/ChartStatistic';
 import TableStatistic from '../Table/TableStatistic';
@@ -10,15 +9,15 @@ import transactionsSelectors from '../../../redux/transactions/transactions-sele
 import { transactionsOperations } from '../../../redux/transactions';
 import s from './DiagramTab.module.css';
 
-export default function DiagraTab() {
-  let today = new Date();
 
+export default function DiagramTab() {
+  
   const [month, setMonth] = useState(() => {
-    const initialState = today.toLocaleString('ru', { month: 'long' });
+    const initialState = new Date().toLocaleString('ru', { month: 'long' });
     return initialState;
   });
   const [year, setYear] = useState(() => {
-    const initialState = String(today.getFullYear());
+    const initialState = String(new Date().getFullYear());
     return initialState;
   });
 
@@ -45,6 +44,13 @@ export default function DiagraTab() {
     'ноябрь',
     'декабрь',
   ];
+
+  const currentMonth = new Date().getMonth() + 1;
+    
+    const monthsSelect = (year === String(new Date().getFullYear()))
+    ?months.slice(0, currentMonth)
+    : months  
+  
   const years = ['2022', '2021', '2020'];
 
   function changeSelect(e) {
@@ -64,19 +70,23 @@ export default function DiagraTab() {
     }
   }
 
-  const arrCategories = Object.values(categories.costs); //categories name
-  const arrCategoriesCosts = Object.values(userDataInfo.categories); // categories costs
+  const arrCategories = Object.values(categories.costs); 
+  const arrCategoriesCosts = Object.values(userDataInfo.categories); 
 
   const arrCategoriesCostsForRender = arrCategoriesCosts.map(
-    item => parseFloat(Number((item * 100) / 100)).toFixed(2), //'100.76', '200.12', '30.90', '400.02', '50.00',
-  );
+    item => parseFloat(Number((item * 100) / 100)).toFixed(2), );
 
-  const categoriesTable = arrCategories.map(function (item, index) {
-    //make obj for render to table
+  function generateRandomColor() {
+    let color =
+      "#" +
+      (Math.random().toString(16) + "000000").substring(2, 8).toUpperCase();
+    return color;
+  }
+  const categoriesTable = arrCategories.map(function (item, index) {    
     return {
       name: item,
       cost: arrCategoriesCostsForRender[index] || '0',
-      color: colorsDiagram[index],
+      color: colorsDiagram[index] || generateRandomColor(),
     };
   });
 
@@ -88,9 +98,10 @@ export default function DiagraTab() {
 
   const costsSumStatistic = costsSum.toFixed(2);
 
-  const costsCategoryChart = arrCategoriesCosts.map(item =>
-    Math.round((360 / costsSum) * Number(item)),
-  );
+   const costsCategoryChart = (costsSum)
+    ? arrCategoriesCosts.map(item => Math.round((360 / costsSum) * Number(item)))
+      :[360]
+  
 
   const totalIncome = Number(userDataInfo.totalIncome).toFixed(2);
 
@@ -105,13 +116,12 @@ export default function DiagraTab() {
         <ChartStatistic
           costsSumStatistic={costsSumStatistic}
           costsCategoryChart={costsCategoryChart}
-          colorsDiagram={colorsDiagram}
-        />
+          colorsDiagram={colorsDiagram} />
 
         <div>
           <div className={s.select}>
             <select name="month" value={month} onChange={changeSelect}>
-              {months.map((item, ind) => (
+              {monthsSelect.map((item, ind) => (
                 <option key={ind} className={s.itemSelect}>
                   {item}{' '}
                 </option>
@@ -130,8 +140,7 @@ export default function DiagraTab() {
           <TableStatistic
             categoriesTable={categoriesTable}
             costsSumStatistic={costsSumStatistic}
-            income={totalIncome}
-          />
+            income={totalIncome} />
         </div>
       </Container>
     </Container>

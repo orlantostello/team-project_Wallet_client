@@ -5,7 +5,7 @@ import LeftBar from '../LeftBar';
 import Balance from '../Balance';
 import Rate from '../Rate';
 import List from '../List/List';
-import Diagram from '../Diagram/DiagramTab';
+import Diagram from '../Diagram/DiagramTab/DiagramTab'
 
 import React, { Fragment } from 'react';
 import Media from 'react-media';
