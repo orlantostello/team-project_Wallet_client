@@ -128,7 +128,7 @@ export default function RegisterForm() {
             height="2px"
             borderRadius="10%"
             isLabelVisible={false}
-            baseBgColor="#f40d0d"
+            baseBgColor="#e5f1ef"
             labelColor="#11ff40"
             maxCompleted={countConfirmPasswordLength(values.password)}
           />
