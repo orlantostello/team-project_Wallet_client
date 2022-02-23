@@ -7,6 +7,8 @@
 
 @media screen and (min-width: 768px) {
   .backgroundImageCVR {
+    margin: 0 auto;
+    width: 768px;
     display: block;
     position: relative;
   }
@@ -14,15 +16,16 @@
   .backgroundImage {
     display: block;
     position: absolute;
-    display: block;
     left: 0;
     right: 0;
     top: 0;
     bottom: 0;
+    /* height: 100vh;
+    width: 100%; */
     background: url('../../images/ellipse-blue.svg'), url('../../images/ellipse-pink.svg');
     background-repeat: no-repeat;
     background-position: left bottom, right top;
-    background-attachment: fixed;
+    background-attachment: scroll;
     z-index: 1;
     filter: blur(10px);
   }
@@ -35,6 +38,10 @@
 }
 
 @media screen and (min-width: 1280px) {
+  .backgroundImageCVR {
+    width: 1280px;
+  }
+
   .container {
     display: flex;
     justify-content: space-between;
