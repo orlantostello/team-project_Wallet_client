@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { ToastContainer, toast } from 'react-toastify';
 
+import { useIsMount } from '../../hooks/useIsMount';
 import Header from './Header/Header';
 import Item from './Item/Item';
 import ButtonAddTransactions from '../ButtonAddTransactions';
@@ -13,6 +14,7 @@ import s from './List.module.css';
 
 function List() {
   const [showModal, setShowModal] = useState(false);
+  const isMount = useIsMount();
 
   const categories = useSelector(categoriesSelectors.getAllCategories);
   const data = useSelector(transactionsSelectors.getAllTransactions);
@@ -30,20 +32,21 @@ function List() {
   }, [dataError]);
 
   useEffect(() => {
-    if (addTransaction) {
-      toast.success('Транзакция была успешно добавлена.', {
-        toastId: 'custom-id-yes',
-      });
+    if (isMount) {
+      return;
+    } else {
+      if (addTransaction) {
+        toast.success('Транзакция была успешно добавлена.', {
+          toastId: 'custom-id-yes',
+        });
+      }
+      if (addTransactionError) {
+        toast.error('Произошла ошибка добавления транзакции.', {
+          toastId: 'custom-id-yes',
+        });
+      }
     }
-  }, [addTransaction]);
-
-  useEffect(() => {
-    if (addTransactionError) {
-      toast.error('Произошла ошибка добавления транзакции.', {
-        toastId: 'custom-id-yes',
-      });
-    }
-  }, [addTransactionError]);
+  }, [addTransaction, addTransactionError]);
 
   const onOpenModal = () => {
     setShowModal(true);
