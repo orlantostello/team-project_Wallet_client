@@ -76,7 +76,7 @@ function List() {
 
             <Header />
 
-            <div>
+            <div className={s.TableList}>
               {[...data]
                 .sort((a, b) => b.date - a.date)
                 .map(elem => (
