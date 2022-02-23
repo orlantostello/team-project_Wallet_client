@@ -4,19 +4,27 @@ import s from './Rate.module.css';
 function Rate() {
   const [course, setCourse] = useState([]);
 
-  async function fetchCourse() {
-    const response = await fetch(
-      'https://api.privatbank.ua/p24api/pubinfo?json&exchange&coursid=5',
-    );
-    return response.ok ? await response.json() : console.log('error');
-  }
-
   useEffect(() => {
-    fetchCourse().then(response => setCourse(response));
+    let isSubscribed = true;
+    const SERVER_URL = 'https://api.privatbank.ua/p24api/pubinfo?json&exchange&coursid=5';
+
+    fetch(SERVER_URL)
+      .then(response => response.json())
+      .then(response => (isSubscribed ? setCourse(response) : null))
+      .catch(error => {
+        if (isSubscribed) {
+          setCourse(prevState => ({
+            ...prevState,
+            error,
+          }));
+        }
+      });
+
+    return () => (isSubscribed = false);
   }, []);
 
   return (
-    <>    
+    <>
       {course && (
         <ul className={s.Rate}>
           <li className={s.RateHead}>
@@ -38,3 +46,16 @@ function Rate() {
 }
 
 export default Rate;
+
+// ============= old version =============
+
+// async function fetchCourse() {
+//   const response = await fetch(
+//     'https://api.privatbank.ua/p24api/pubinfo?json&exchange&coursid=5',
+//   );
+//   return response.ok ? await response.json() : console.log('error');
+// }
+
+// useEffect(() => {
+//   fetchCourse().then(response => setCourse(response));
+// }, []);
