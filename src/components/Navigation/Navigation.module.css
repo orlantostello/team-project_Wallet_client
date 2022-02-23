@@ -4,7 +4,6 @@
   justify-content: center;
   padding-left: 0px;
   padding-top: 10px;
-  /* padding-bottom: 34px; */
   margin: 0 auto;
 }
 
@@ -59,11 +58,10 @@
 
   .item {
     padding-top: 10px;
-    display: flex;
-    align-items: center;
   }
 
   .link {
+    display: block;
     width: 18px;
     height: 18px;
     text-decoration: none;
@@ -76,6 +74,7 @@
   }
 
   .activeLink {
+    display: block;
     width: 18px;
     height: 18px;
     text-decoration: none;
@@ -87,7 +86,21 @@
     border-radius: 3px;
   }
 
+  .linkDiv {
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-end;
+    width: 334px;
+    height: 27px;
+  }
+
+  .svgDiv {
+    display: block;
+    height: 18px;
+    width: 18px;
+  }
   .svg {
+    display: block;
     width: 14px;
     height: 14px;
   }
@@ -98,8 +111,11 @@
   }
 
   .itemTitle {
+    display: block;
+    height: 27px;
     color: black;
-    padding-left: 44px;
+    padding-bottom: 2px;
+    padding-left: 20px;
     transition-property: color;
     transition-duration: 200ms;
   }
@@ -128,6 +144,6 @@
   }
 
   .itemTitle {
-    padding-left: 41px;
+    /* padding-left: 41px; */
   }
 }
