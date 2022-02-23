@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { useFormik } from 'formik';
@@ -5,6 +6,7 @@ import * as yup from 'yup';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
+import { useIsMount } from '../../hooks/useIsMount';
 import Loader from '../Loader/Loader';
 import { usersOperations, usersSelectors } from '../../redux/users';
 import { MdEmail, MdLock } from 'react-icons/md';
@@ -17,15 +19,22 @@ const emailRegexp = /^\w+([\.-]?\w+)+@\w+([\.:]?\w+)+(\.[a-zA-Z0-9]{2,3})+$/;
 export default function LoginForm() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const isMount = useIsMount();
 
   const isLoading = useSelector(usersSelectors.getIsFetchingCurrent);
   const isError = useSelector(usersSelectors.getError);
 
-  async function createNotification() {
-    await toast.error('Неверный логин или пароль!', {
-      toastId: 'custom-id-yes',
-    });
-  }
+  useEffect(() => {
+    if (isMount) {
+      return;
+    } else {
+      if (isError) {
+        toast.error('Неверный логин или пароль!', {
+          toastId: 'custom-id-yes',
+        });
+      }
+    }
+  }, [isError]);
 
   const handleOnClickToRegister = () => {
     navigate('/register');
@@ -42,10 +51,9 @@ export default function LoginForm() {
       password: '',
     },
     validationSchema,
-    onSubmit: async (values, { resetForm }) => {
+    onSubmit: (values, { resetForm }) => {
       const { email, password } = values;
-      await dispatch(usersOperations.logIn({ email, password }));
-      await createNotification();
+      dispatch(usersOperations.logIn({ email, password }));
       resetForm();
     },
   });
