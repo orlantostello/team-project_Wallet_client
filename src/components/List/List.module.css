@@ -40,6 +40,22 @@
   }
 }
 @media screen and (min-width: 768px) {
+  .TableList {
+    height: 500px;
+    overflow-y: scroll;
+  }
+  .TableList::-webkit-scrollbar {
+    width: 5px;
+    height: 5px;
+    background-color: #ccc;
+    color: #e7e5f2;
+    border-radius: 20px;
+  }
+  .TableList::-webkit-scrollbar-thumb {
+    background: var(--svg-blue);
+    border-radius: 20px;
+  }
+
   .List {
     padding-top: 40px;
   }

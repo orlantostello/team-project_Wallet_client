@@ -47,6 +47,7 @@ function List() {
         });
       }
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [addTransaction, addTransactionError]);
 
   const onOpenModal = () => {
@@ -59,26 +60,22 @@ function List() {
 
   return (
     <>
-      {isLoading ? (
-        <Loader />
-      ) : (
-        <>
-          {dataError && <ToastContainer autoClose={3000} position="top-center" theme="colored" />}
-          {addTransaction && (
-            <ToastContainer autoClose={2000} position="top-center" theme="colored" />
-          )}
-          {addTransactionError && (
-            <ToastContainer autoClose={2000} position="top-center" theme="colored" />
-          )}
-          {isLoadingCreate && <Loader />}
-          <ul className={s.List}>
-            <div className={s.MiddleLine}></div>
+      {isLoading && <Loader />}
+      {dataError && <ToastContainer autoClose={3000} position="top-center" theme="colored" />}
+      {addTransaction && <ToastContainer autoClose={2000} position="top-center" theme="colored" />}
+      {addTransactionError && (
+        <ToastContainer autoClose={2000} position="top-center" theme="colored" />
+      )}
+      {isLoadingCreate && <Loader />}
+      <ul className={s.List}>
+        <div className={s.MiddleLine}></div>
+
 
               <Header />
               {data.length === 0 ? (<div className={s.noTransaction}><p className={s.message}>
                 У ВАС ПОКА НЕТ ТРАНЗАКЦИЙ, ДЛЯ ДОБАВЛЕНИЯ ТРАНЗАКЦИЙ НАЖМИТЕ КНОПКУ "+"</p>
               </div>) :
-                (<div>
+                (<div className={s.TableList}>
                   {[...data]
                     .sort((a, b) => b.date - a.date)
                     .map(elem => (
@@ -91,10 +88,8 @@ function List() {
                 )}
           </ul>
 
-          <ButtonAddTransactions onOpenModal={onOpenModal} />
-          {showModal && <ModalAddTransaction onCloseModal={onCloseModal} />}
-        </>
-      )}
+      <ButtonAddTransactions onOpenModal={onOpenModal} />
+      {showModal && <ModalAddTransaction onCloseModal={onCloseModal} />}
     </>
   );
 }

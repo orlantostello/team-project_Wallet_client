@@ -51,6 +51,16 @@ const usersSlice = createSlice({
       state.user = { name: null, email: null, balance: null };
       state.token = null;
       state.isLoggedIn = false;
+      state.isFetchingCurrentUser = false;
+    },
+    [userOperations.logOut.rejected](state) {
+      state.user = { name: null, email: null, balance: null };
+      state.token = null;
+      state.isLoggedIn = false;
+      state.isFetchingCurrentUser = false;
+    },
+    [userOperations.logOut.pending](state) {
+      state.isFetchingCurrentUser = true;
     },
 
     [userOperations.fetchCurrentUser.fulfilled](state, action) {
