@@ -29,7 +29,7 @@
   .TableList::-webkit-scrollbar {
     width: 5px;
     height: 5px;
-    background-color: var(--pink-text);
+    background-color: #ccc;
     color: #e7e5f2;
     border-radius: 20px;
   }

@@ -8,6 +8,7 @@
 @media screen and (min-width: 768px) {
   .backgroundImageCVR {
     margin: 0 auto;
+    padding-bottom: 40px;
     width: 768px;
     display: block;
     position: relative;
