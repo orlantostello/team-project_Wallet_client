@@ -36,14 +36,22 @@ function Navigation() {
         <ul className={s.list}>
           <li className={s.item}>
             <NavLink end to="/current" className={isLinkActive}>
-              <MdHome className={s.svg} />
-              <div className={s.itemTitle}>Главная</div>
+                <div className={s.linkDiv}>
+                  <div className={s.svgDiv}>
+                    <MdHome className={s.svg} />
+                  </div>         
+                  <div className={s.itemTitle}>Главная</div>
+                </div>
             </NavLink>
           </li>
           <li className={s.item}>
             <NavLink end to="/current/diagram" className={isLinkActive}>
-              <MdTimeline className={s.svg} />
-              <div className={s.itemTitle}>Статистика</div>
+                <div className={s.linkDiv}>
+                  <div className={s.svgDiv}>
+                    <MdTimeline className={s.svg} />
+                  </div>                  
+                  <div className={s.itemTitle}>Статистика</div>
+                </div>
             </NavLink>
           </li>
         </ul>

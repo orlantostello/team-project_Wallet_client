@@ -1,5 +1,6 @@
 .Rate {
   font-style: normal;
+  height: 208px;
   width: 280px;
   border-radius: 30px;
   background-color: var(--svg-blue);
@@ -58,6 +59,7 @@
     width: 334px;
     height: 188px;
     margin-left: 20px;
+    margin-top: 0px;
     background-size: 334px;
   }
 
