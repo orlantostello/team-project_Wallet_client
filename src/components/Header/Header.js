@@ -25,21 +25,17 @@ const Header = () => {
   return (
     <div className={style.wrapper}>
       <div className={style.container}>
-        <div className={style.logoBox}>
-          <div className={style.logoBox}>
-            <Link to="">
-              <Logo s={style.logo} />
-              <LogoName s={style.logoNameVector} />
-            </Link>
-          </div>
-        </div>
+        <Link to="" className={style.logoBox}>
+          <Logo s={style.logo} />
+          <LogoName s={style.logoNameVector} />
+        </Link>
         <div className={style.userInfo}>
-          <span className={style.userName}>{name}</span>
+        <span className={style.userName}>{name}</span>
 
-          <button className={style.logout} onClick={onOpenModal}>
-            <Exit s={style.logoutSvg} />
-              <span className={style.exit}>Exit</span>
-          </button>
+        <button className={style.logout} onClick={onOpenModal}>
+          <Exit s={style.logoutSvg} />
+          <span className={style.exit}>Exit</span>
+        </button>
         </div>
       </div>
       {showModal && <ModalLogout onCloseModal={onCloseModal} />}

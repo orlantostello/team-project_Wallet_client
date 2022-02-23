@@ -70,20 +70,23 @@ function List() {
       <ul className={s.List}>
         <div className={s.MiddleLine}></div>
 
-        <Header />
-          
-        <div className={s.TableList}>
-          {[...data]
-            .sort((a, b) => b.date - a.date)
-            .map(elem => (
-              <div key={elem._id} className={s.wrapper}>
-                <div className={elem.isIncome ? s.line_income : s.line_expenses}></div>
-                  <Item elem={elem} categories={categories} />
-                </div>
-            ))}
-        </div>
 
-      </ul>
+              <Header />
+              {data.length === 0 ? (<div className={s.noTransaction}><p className={s.message}>
+                У ВАС ПОКА НЕТ ТРАНЗАКЦИЙ, ДЛЯ ДОБАВЛЕНИЯ ТРАНЗАКЦИЙ НАЖМИТЕ КНОПКУ "+"</p>
+              </div>) :
+                (<div className={s.TableList}>
+                  {[...data]
+                    .sort((a, b) => b.date - a.date)
+                    .map(elem => (
+                      <div key={elem._id} className={s.wrapper}>
+                        <div className={elem.isIncome ? s.line_income : s.line_expenses}></div>
+                        <Item elem={elem} categories={categories} />
+                      </div>
+                    ))}
+              </div>
+                )}
+          </ul>
 
       <ButtonAddTransactions onOpenModal={onOpenModal} />
       {showModal && <ModalAddTransaction onCloseModal={onCloseModal} />}
