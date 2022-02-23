@@ -22,6 +22,7 @@ function List() {
   const dataError = useSelector(transactionsSelectors.getAllTransactionsError);
   const addTransaction = useSelector(transactionsSelectors.createTransaction);
   const addTransactionError = useSelector(transactionsSelectors.createTransactionError);
+  const isLoadingCreate = useSelector(transactionsSelectors.getIsFetchingCreate);
 
   useEffect(() => {
     if (dataError) {
@@ -64,12 +65,12 @@ function List() {
         <>
           {dataError && <ToastContainer autoClose={3000} position="top-center" theme="colored" />}
           {addTransaction && (
-            <ToastContainer autoClose={3000} position="top-center" theme="colored" />
+            <ToastContainer autoClose={2000} position="top-center" theme="colored" />
           )}
           {addTransactionError && (
-            <ToastContainer autoClose={3000} position="top-center" theme="colored" />
+            <ToastContainer autoClose={2000} position="top-center" theme="colored" />
           )}
-
+          {isLoadingCreate && <Loader />}
           <ul className={s.List}>
             <div className={s.MiddleLine}></div>
 

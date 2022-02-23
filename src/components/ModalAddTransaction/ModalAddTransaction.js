@@ -58,9 +58,9 @@ function ModalAddTransaction({ onCloseModal }) {
         isIncome: checked,
         date: date.getTime(),
       };
+      onCloseModal();
       await dispatch(transactionsOperations.createTransactions(currentValue));
       await dispatch(usersOperations.fetchCurrentUser());
-      onCloseModal();
     },
   });
 
