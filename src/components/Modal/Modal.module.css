@@ -19,6 +19,17 @@
   padding: 20px;
   background-color: #fff;
   border-radius: 20px;
+  animation: show 0.5s 1;
+  animation-fill-mode: forwards;
+}
+
+@keyframes show {
+  0% {
+    opacity: 0.2;
+  }
+  100% {
+    opacity: 1;
+  }
 }
 
 @media screen and (min-width: 768px) {
