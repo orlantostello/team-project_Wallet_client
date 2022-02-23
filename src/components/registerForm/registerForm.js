@@ -35,6 +35,7 @@ export default function RegisterForm() {
         });
       }
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isError]);
 
   const handleOnClickToLogin = () => navigate('/login');

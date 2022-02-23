@@ -47,6 +47,7 @@ function List() {
         });
       }
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [addTransaction, addTransactionError]);
 
   const onOpenModal = () => {
@@ -59,39 +60,32 @@ function List() {
 
   return (
     <>
-      {isLoading ? (
-        <Loader />
-      ) : (
-        <>
-          {dataError && <ToastContainer autoClose={3000} position="top-center" theme="colored" />}
-          {addTransaction && (
-            <ToastContainer autoClose={2000} position="top-center" theme="colored" />
-          )}
-          {addTransactionError && (
-            <ToastContainer autoClose={2000} position="top-center" theme="colored" />
-          )}
-          {isLoadingCreate && <Loader />}
-          <ul className={s.List}>
-            <div className={s.MiddleLine}></div>
-
-            <Header />
-
-            <div>
-              {[...data]
-                .sort((a, b) => b.date - a.date)
-                .map(elem => (
-                  <div key={elem._id} className={s.wrapper}>
-                    <div className={elem.isIncome ? s.line_income : s.line_expenses}></div>
-                    <Item elem={elem} categories={categories} />
-                  </div>
-                ))}
-            </div>
-          </ul>
-
-          <ButtonAddTransactions onOpenModal={onOpenModal} />
-          {showModal && <ModalAddTransaction onCloseModal={onCloseModal} />}
-        </>
+      {isLoading && <Loader />}
+      {dataError && <ToastContainer autoClose={3000} position="top-center" theme="colored" />}
+      {addTransaction && <ToastContainer autoClose={2000} position="top-center" theme="colored" />}
+      {addTransactionError && (
+        <ToastContainer autoClose={2000} position="top-center" theme="colored" />
       )}
+      {isLoadingCreate && <Loader />}
+      <ul className={s.List}>
+        <div className={s.MiddleLine}></div>
+
+        <Header />
+
+        <div>
+          {[...data]
+            .sort((a, b) => b.date - a.date)
+            .map(elem => (
+              <div key={elem._id} className={s.wrapper}>
+                <div className={elem.isIncome ? s.line_income : s.line_expenses}></div>
+                <Item elem={elem} categories={categories} />
+              </div>
+            ))}
+        </div>
+      </ul>
+
+      <ButtonAddTransactions onOpenModal={onOpenModal} />
+      {showModal && <ModalAddTransaction onCloseModal={onCloseModal} />}
     </>
   );
 }

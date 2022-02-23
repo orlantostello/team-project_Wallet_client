@@ -34,6 +34,7 @@ export default function LoginForm() {
         });
       }
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isError]);
 
   const handleOnClickToRegister = () => {
