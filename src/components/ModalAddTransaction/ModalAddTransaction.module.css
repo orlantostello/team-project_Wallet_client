@@ -1,9 +1,9 @@
 @media screen and (max-width: 767px) {
   .text {
-    font-family: 'Segoeui';
+    font-family: 'Segoeui', sans-serif;
     font-weight: 400;
     font-size: 24px;
-    line-height: 1.6;
+    line-height: 1.5;
     letter-spacing: 0.03em;
     text-align: center;
     color: var(--black-text);
@@ -37,10 +37,10 @@
   }
 
   .date {
-    font-family: 'Segoeui';
+    font-family: 'Circe', sans-serif;
     font-weight: 400;
     font-size: 18px;
-
+    line-height: 1.5;
     margin-left: 20px;
     margin-right: 134px;
 
@@ -55,7 +55,7 @@
     min-width: 100%;
     height: 1px;
     border-radius: 2px;
-    background-color: #8b8686;
+    background-color: #bdbdbd;
   }
 
   .togolbar {
@@ -65,36 +65,38 @@
   }
   .plus {
     position: relative;
-    font-family: 'Circe';
+    font-family: 'Circe', sans-serif;
     font-weight: 700;
     font-size: 16px;
-    line-height: 1.6;
+    line-height: 1.5;
     color: #24cca7;
     margin-right: 60px;
   }
 
   .plus_noactive {
-    font-family: 'Circe';
+    font-family: 'Circe', sans-serif;
     font-weight: 700;
     font-size: 16px;
-    line-height: 1.6;
+    line-height: 1.5;
     color: #e0e0e0;
     margin-right: 60px;
   }
 
   .minus {
     position: relative;
-    font-family: 'Circe';
+    font-family: 'Circe', sans-serif;
     font-weight: 700;
     font-size: 16px;
+    line-height: 1.5;
     color: #ff6596;
     margin-left: 60px;
   }
 
   .minus_noactive {
-    font-family: 'Circe';
+    font-family: 'Circe', sans-serif;
     font-weight: 700;
     font-size: 16px;
+    line-height: 1.5;
     color: #e0e0e0;
     margin-left: 60px;
   }
@@ -105,8 +107,8 @@
     align-items: center;
     justify-content: center;
     min-width: 280px;
-    padding-left: 10px;
-    padding-right: 10px;
+    /* padding-left: 10px;
+    padding-right: 10px; */
     margin-bottom: 40px;
   }
   .notification {
@@ -115,7 +117,7 @@
     left: 20%;
     font-family: Circe;
     font-size: 16px;
-    line-height: 1.1;
+    line-height: 1.5;
     color: #ff4800;
     text-align: center;
   }
@@ -125,9 +127,9 @@
     bottom: -38px;
     left: 65px;
 
-    font-family: Circe;
+    font-family: 'Circe', sans-serif;
     font-size: 16px;
-    line-height: 1.1;
+    line-height: 1.5;
     color: #ff4800;
     text-align: center;
   }
@@ -154,6 +156,14 @@
     justify-content: center;
   }
 
+  .commentinput {
+    width: 280px;
+    height: 74px;
+    margin-top: 40px;
+    padding-left: 20px;
+    padding-bottom: 50px;
+  }
+
   .closebtn {
     display: none;
     position: absolute;
@@ -173,14 +183,72 @@
     top: 0px;
     left: 0px;
   }
+  .btn {
+    font-family: 'Circe', sans-serif;
+  }
+
+  .formcontrol {
+    display: flex;
+    justify-content: center;
+    font-family: 'Circe', sans-serif;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 1.5;
+    width: 280px;
+    height: 34px;
+  }
+
+  .selectmenuin {
+    font-family: 'Circe', sans-serif;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 1.5;
+    color: var(--black-text);
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(50px);
+  }
+
+  .selectmenuin:hover {
+    font-family: 'Circe', sans-serif;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 1.5;
+    color: var(--green-text);
+    background-color: #fff;
+  }
+
+  .selectmenu {
+    font-family: 'Circe', sans-serif;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 1.5;
+    color: var(--black-text);
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(50px);
+    /* box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.1); */
+    /* border-radius: 20px; */
+  }
+
+  .selectmenu:hover {
+    font-family: 'Circe', sans-serif;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 1.5;
+    color: var(--pink-text);
+    background-color: #fff;
+  }
 }
 
 @media screen and (min-width: 768px) {
+  /* .modalform {
+   
+  } */
+
   .text {
-    font-family: 'Segoeui';
+    font-family: 'Segoeui', sans-serif;
     font-weight: 400;
     font-size: 30px;
-    line-height: 1.6;
+    line-height: 1.5;
     letter-spacing: 0.03em;
     text-align: center;
     color: var(--black-text);
@@ -210,9 +278,10 @@
   }
 
   .date {
-    font-family: 'Segoeui';
+    font-family: 'Circe', sans-serif;
     font-weight: 400;
     font-size: 18px;
+    line-height: 1.5;
     padding-left: 20px;
     margin-right: 44px;
     color: var(--black-text);
@@ -226,7 +295,7 @@
     width: 190px;
     height: 1px;
     border-radius: 2px;
-    background-color: #8b8686;
+    background-color: #bdbdbd;
   }
 
   .calendar {
@@ -243,36 +312,38 @@
   }
   .plus {
     position: relative;
-    font-family: 'Circe';
+    font-family: 'Circe', sans-serif;
     font-weight: 700;
     font-size: 16px;
-    line-height: 1.6;
+    line-height: 1.5;
     color: var(--green-text);
     margin-right: 60px;
   }
 
   .plus_noactive {
-    font-family: 'Circe';
+    font-family: 'Circe', sans-serif;
     font-weight: 700;
     font-size: 16px;
-    line-height: 1.6;
+    line-height: 1.5;
     color: #e0e0e0;
     margin-right: 60px;
   }
 
   .minus {
     position: relative;
-    font-family: 'Circe';
+    font-family: 'Circe', sans-serif;
     font-weight: 700;
     font-size: 16px;
+    line-height: 1.5;
     color: var(--pink-text);
     margin-left: 60px;
   }
 
   .minus_noactive {
-    font-family: 'Circe';
+    font-family: 'Circe', sans-serif;
     font-weight: 700;
     font-size: 16px;
+    line-height: 1.5;
     color: #e0e0e0;
     margin-left: 60px;
   }
@@ -288,9 +359,9 @@
     position: absolute;
     bottom: -42px;
     left: 65px;
-    font-family: 'Circe';
+    font-family: 'Circe', sans-serif;
     font-size: 16px;
-    line-height: 1.1;
+    line-height: 1.5;
     color: var(--pink-text);
     text-align: center;
   }
@@ -300,9 +371,9 @@
     bottom: -38px;
     left: 65px;
 
-    font-family: 'Circe';
+    font-family: 'Circe', sans-serif;
     font-size: 16px;
-    line-height: 1.1;
+    line-height: 1.5;
     color: var(--pink-text);
     text-align: center;
   }
@@ -346,5 +417,73 @@
   .comment {
     display: flex;
     justify-content: center;
+  }
+  .commentinput {
+    width: 410px;
+    height: 30px;
+    margin-top: 43px;
+    padding-left: 20px;
+  }
+
+  .btn {
+    font-family: 'Circe', sans-serif;
+  }
+
+  .formcontrol {
+    display: flex;
+    justify-content: center;
+    font-family: 'Circe', sans-serif;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 1.5;
+    width: 409px;
+    border-radius: 20px;
+    height: 34px;
+  }
+
+  /* .select {
+   
+  } */
+
+  .selectmenuin {
+    font-family: 'Circe', sans-serif;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 1.5;
+    color: var(--black-text);
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(50px);
+  }
+
+  .selectmenuin:hover {
+    font-family: 'Circe', sans-serif;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 1.5;
+    color: var(--green-text);
+    background-color: #fff;
+  }
+
+  .selectmenu {
+    font-family: 'Circe', sans-serif;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 1.5;
+    color: var(--black-text);
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(50px);
+
+    border-radius: 20px;
+  }
+
+  .selectmenu:hover {
+    font-family: 'Circe', sans-serif;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 1.5;
+    color: var(--pink-text);
+    background: #fff;
+    /* background-color: #fff; */
+    /* background: rgba(255, 255, 255, 0.7); */
   }
 }

@@ -19,15 +19,17 @@ import { usersOperations } from '../../redux/users';
 import calendar from './calendar.svg';
 import close from './close.svg';
 import s from './ModalAddTransaction.module.css';
+import { capitalizeFirsLetter } from '../../helper/helper';
 
 const numberRegexp = /[0-9] + (. [0-9] {2})? $/;
 
 function ModalAddTransaction({ onCloseModal }) {
-  const [checked, setChecked] = useState(true);
+  const [checked, setChecked] = useState(false);
   const dispatch = useDispatch();
 
   const categories = useSelector(categoriesSelectors.getAllCategories);
   const arrayKeys = Object.keys(categories.costs);
+  const arrayKeysIncome = Object.keys(categories.income);
 
   const handleChangeChecked = event => {
     setChecked(event.target.checked);
@@ -82,7 +84,7 @@ function ModalAddTransaction({ onCloseModal }) {
   return (
     <>
       <Modal onCloseModal={onCloseModal}>
-        <div>
+        <div className={s.modalform}>
           <p className={s.text}>Добавить транзакцию</p>
           <form className={s.form} onSubmit={handleSubmit}>
             <Box className={s.togolbar}>
@@ -109,21 +111,24 @@ function ModalAddTransaction({ onCloseModal }) {
             </Box>
 
             <div className={s.categories}>
-              <FormControl variant="standard" sx={{ m: 1, width: 409, height: 34 }}>
+              <FormControl
+                className={s.formcontrol}
+                variant="standard"
+                sx={{ m: 1, backdropFilter: 'blur(50px)', background: 'rgba(255, 255, 255, 0.7)' }}
+              >
                 <InputLabel
                   id="demo-simple-select-standard-label"
                   style={{
                     paddingLeft: '20px',
-                    fontFamily: 'Circe',
-                    fontSize: '18px',
-                    fontWeight: '400',
-                    color: '#8b8686',
+
+                    color: '#BDBDBD',
                   }}
                 >
                   Выберите категорию
                 </InputLabel>
                 <label htmlFor={'category'} />
                 <Select
+                  className={s.select}
                   labelId="demo-simple-select-standard-label"
                   id={'category'}
                   name={'category'}
@@ -132,14 +137,14 @@ function ModalAddTransaction({ onCloseModal }) {
                   label="Category"
                 >
                   {categories && checked
-                    ? arrayKeys.map(el => (
-                        <MenuItem key={el} dataid={el} value={el}>
-                          {categories.income[el]}
+                    ? arrayKeysIncome.map(el => (
+                        <MenuItem className={s.selectmenuin} key={el} dataid={el} value={el}>
+                          {capitalizeFirsLetter(categories.income[el])}
                         </MenuItem>
                       ))
                     : arrayKeys.map(el => (
-                        <MenuItem key={el} value={el}>
-                          {categories.costs[el]}
+                        <MenuItem className={s.selectmenu} key={el} value={el}>
+                          {capitalizeFirsLetter(categories.costs[el])}
                         </MenuItem>
                       ))}
                 </Select>
@@ -180,17 +185,20 @@ function ModalAddTransaction({ onCloseModal }) {
             <div className={s.comment}>
               <label htmlFor={'comment'} />
               <Input
+                className={s.commentinput}
                 id={'comment'}
                 name={'comment'}
                 value={values.comment}
                 placeholder="Комментарий"
                 type="text"
-                style={{
-                  width: '410px',
-                  height: '30px',
-                  marginTop: '43px',
-                  paddingLeft: '20px',
-                }}
+                style={
+                  {
+                    // width: '410px',
+                    // height: '30px',
+                    // marginTop: '43px',
+                    // paddingLeft: '20px',
+                  }
+                }
                 onChange={handleChange}
               />
             </div>
@@ -198,13 +206,13 @@ function ModalAddTransaction({ onCloseModal }) {
             <div className={s.buttongroup}>
               <ThemeProvider theme={theme}>
                 <Button
+                  className={s.btn}
                   type={'submit'}
                   style={{
                     marginTop: '50px',
                     width: '300px',
                     height: '50px',
                     borderRadius: '20px',
-                    fontFamily: 'Circe',
                     fontSize: '18px',
                     fontWeight: '400',
                   }}
@@ -215,6 +223,7 @@ function ModalAddTransaction({ onCloseModal }) {
                   ДОБАВИТЬ
                 </Button>
                 <Button
+                  className={s.btn}
                   type="button"
                   onClick={onCloseModal}
                   style={{
@@ -223,7 +232,6 @@ function ModalAddTransaction({ onCloseModal }) {
                     height: '50px',
                     borderRadius: '20px',
                     boxShadow: '0 0 1px 1px #4A56E2',
-                    fontFamily: 'Circe',
                     fontSize: '18px',
                     fontWeight: '400',
                   }}
