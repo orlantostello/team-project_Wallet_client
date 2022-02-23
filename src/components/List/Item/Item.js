@@ -1,5 +1,5 @@
 import React from 'react';
-import { HEADER_NAME } from '../../../dictionary/dictionary';
+import { HEADER_NAME } from '../../../constants/constants';
 import s from '../Item/Item.module.css';
 import { capitalizeFirsLetter } from '../../../helper/helper';
 
@@ -42,13 +42,18 @@ function Item({ elem, categories }) {
           className={`${s.TableRow} ${s.bold}`}
           style={{ color: elem.isIncome ? 'var(--green-text)' : 'var(--pink-text)' }}
         >
-          {Number(elem.amount).toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, " ")}
+          {Number(elem.amount)
+            .toFixed(2)
+            .replace(/\B(?=(\d{3})+(?!\d))/g, ' ')}
         </span>
       </div>
 
       <div className={`${s.box} ${s.center}`}>
         <span className={s.test}>{capitalizeFirsLetter(HEADER_NAME.BALANCE)}</span>
-        <span className={s.TableRow}>{Number((elem.currentBalance)).toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, " ")}
+        <span className={s.TableRow}>
+          {Number(elem.currentBalance)
+            .toFixed(2)
+            .replace(/\B(?=(\d{3})+(?!\d))/g, ' ')}
         </span>
       </div>
     </li>
