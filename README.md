@@ -19,3 +19,5 @@ App (основная логика взаимодействия компонен
 Backend - Коробченко, Отришко
 
 "статистика" - Кандибула, подключать компонент <DiagramTab/>
+
+[team-project_Wallet_server](https://github.com/AlexanderKorobchenko/team-project_Wallet_server) 
